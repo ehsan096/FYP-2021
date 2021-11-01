@@ -3,7 +3,7 @@ import CategoryBanner from "../component/LogoSubCategory/CategoryBanner/Category
 import BannerLogo from "../component/LogoSubCategory/BannerLogo/BannerLogo";
 import Logos from "../component/LogoSubCategory/SubCategoryLogos/Logos";
 import Navbar from "../component/Navbar/Navbar";
-import { Logoos } from "../component/LogoSubCategory/DumyData";
+import { categories } from "../component/LogoSubCategory/DumyData";
 
 import { useParams } from "react-router-dom";
 
@@ -13,14 +13,14 @@ const LogoSubCatogory = ({ setLogo }) => {
   return (
     <div>
       <Navbar />
-      {Logoos.map((logo) =>
-        logo.category === variable ? (
+      {categories.map((categry) =>
+        categry.category === variable ? (
           <>
             <BannerLogo
-              BannerTitle={logo.BannerTitle}
-              paragraph={logo.paragraph}
+              BannerTitle={categry.BannerTitle}
+              paragraph={categry.paragraph}
             />
-            <Logos setLogo={setLogo} title={logo.title} logo={logo.logo} />
+            <Logos setLogo={setLogo} title={categry.title} />
           </>
         ) : (
           ""

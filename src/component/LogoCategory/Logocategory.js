@@ -22,7 +22,42 @@ import medical from "../../images/medical.png";
 
 const Logocategory = () => {
   const classes = useStyle();
-  let variable = "animal";
+  let variable = "";
+  let categories = [
+    {
+      name: "Education",
+      image: eduction,
+    },
+    {
+      name: "Fashion",
+      image: beauty,
+    },
+    {
+      name: "Animal",
+      image: animal,
+    },
+    {
+      name: "Food",
+      image: food,
+    },
+    {
+      name: "Business",
+      image: business,
+    },
+    {
+      name: "Sports",
+      image: sport,
+    },
+    {
+      name: "Medical",
+      image: medical,
+    },
+    {
+      name: "Letter",
+      image: letter,
+    },
+  ];
+
   return (
     <div>
       <Container className={classes.Gridcontainer}>
@@ -30,132 +65,33 @@ const Logocategory = () => {
           Discover 1000+ Professional Grade Logo Designs
         </Typography>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link className={classes.cardlink}>
-              <Card className={classes.grid}>
-                <CardActionArea>
-                  <CardMedia image={eduction} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography varient="h6" component="h2">
-                      Education Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link className={classes.cardlink}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia image={beauty} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography varient="h6" component="h2">
-                      Fashion & Beauty Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link to="/selectlogo/animal" className={classes.cardlink}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia image={animal} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography varient="h6" component="h2">
-                      Animals Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link to={`/selectlogo/${variable}`} className={classes.cardlink}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia image={food} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography varient="h6" component="h2">
-                      Food Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-          {/* </Grid> */}
-          {/* <Grid container spacing={3}> */}
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link className={classes.cardlink}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia image={business} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography varient="h6" component="h2">
-                      Business Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link className={classes.cardlink}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia image={sport} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography varient="h6" component="h2">
-                      Sport Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link className={classes.cardlink}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia image={medical} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography varient="h6" component="h2">
-                      Medical Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link className={classes.cardlink}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia image={letter} className={classes.media} />
-                  <Divider />
-                  <CardContent>
-                    <Typography
-                      varient="h6"
-                      // component="h2"
-                      className={classes.logotext}
-                    >
-                      Letter Logo
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
+          {categories.map((category) => {
+            console.log("categories.map > ", category);
+            variable = category.name;
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={category.name}>
+                <Link
+                  to={`/selectlogo/${variable}`}
+                  className={classes.cardlink}
+                >
+                  <Card className={classes.grid}>
+                    <CardActionArea>
+                      <CardMedia
+                        image={category.image}
+                        className={classes.media}
+                      />
+                      <Divider />
+                      <CardContent>
+                        <Typography varient="h6" component="h2">
+                          {category.name} Logo
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Link>
+              </Grid>
+            );
+          })}
         </Grid>
       </Container>
     </div>

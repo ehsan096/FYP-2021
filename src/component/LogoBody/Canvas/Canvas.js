@@ -6737,7 +6737,7 @@ const Canvas = ({
         saveAs(
           new Blob([canvas.toSVG()], { type: "image/svg+xml" }),
           `logo.svg`
-        );
+       );
         // var json = canvas.toJSON();
         // saveAs(
         //   new Blob([JSON.stringify(json)], { type: "txt/JSON" }),
