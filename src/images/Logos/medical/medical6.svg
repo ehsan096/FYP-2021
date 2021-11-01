@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="400" height="400" viewBox="0 0 400 400" xml:space="preserve">
+<desc>Created with Fabric.js 3.6.3</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="rgba(255, 255, 255, 1)"></rect>
+<g transform="matrix(1 0 0 1 205 240.24)" style=""  >
+		<text xml:space="preserve" font-family="'Open Sans', sans-serif" font-size="18" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-108.5" y="5.97" style="font-size: 19px; font-weight: bold; ">Your Company Name</tspan></text>
+</g>
+<g transform="matrix(1 0 0 1 229.48 273.67)" style=""  >
+		<text xml:space="preserve" font-family="'Open Sans', sans-serif" font-size="18" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-81.99" y="5.65" >slogan here</tspan></text>
+</g>
+<g transform="matrix(0.07 0 0 0.05 196.5 191.43)" id="Layer_1"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 39.9375; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-1280, -800)" d="M 40.7273 821.8017 h 268.5091 l 47.7637 -172.9818 l 112.3091 746.1454 l 96.8181 -1188.9272 l 67.1273 730.6545 l 68.4182 -112.309 l 490.5454 -0.0001 C 1054.7365 708.2018 830.494 570.7199 848.8364 403.5472 c 24.2142 -220.6881 363.3909 -259.4727 454.3999 -85.2 c 141.3546 -183.9545 437.1022 -141.5187 446.6545 109.7273 c 5.7213 150.48 -239.6946 298.7264 -339.5089 396.3091 l 481.5089 1.291 l 63.2546 114.891 l 70.9999 -715.1637 l 94.2365 1157.9454 l 112.3091 -728.0727 l 46.4727 165.2363 h 240.1091" stroke-linecap="round" />
+</g>
+</svg>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="400" height="400" viewBox="0 0 400 400" xml:space="preserve">
+<desc>Created with Fabric.js 3.6.3</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="rgba(255, 255, 255, 1)"></rect>
+<g transform="matrix(1 0 0 1 213.5 233.67)" style=""  >
+		<text xml:space="preserve" font-family="'Open Sans', sans-serif" font-size="18" font-style="normal" font-weight="bold" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-112" y="5.65" >Your Company Name</tspan></text>
+</g>
+<g transform="matrix(1 0 0 1 228.5 268.67)" style=""  >
+		<text xml:space="preserve" font-family="'Open Sans', sans-serif" font-size="18" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-83" y="5.65" >slogan here</tspan></text>
+</g>
+<g transform="matrix(1.1 0 0 1.1 205.63 145.38)"  >
+<g style=""   >
+		<g transform="matrix(1 0 0 1 -8 12)" id="path7583"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 6; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: rgb(200,113,55); fill-rule: evenodd; opacity: 1;"  transform=" translate(-122.38, -467.32)" d="m 82.38 439.32 h 80 c 0 24 -3.16 40 -24 56 h -32 c -19.691 -14.07 -24 -32 -24 -56 z" stroke-linecap="round" />
+</g>
+		<g transform="matrix(1 0 0 1 -7.83 39.82)" id="path7585"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 6; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: rgb(200,113,55); fill-rule: evenodd; opacity: 1;"  transform=" translate(-122.55, -495.14)" d="m 74.38 487.32 h 96.34 c -8.34 8 -8.34 12.66 -28.91 15.65 h -38.53 c -20.9 -2.45 -20.9 -7.65 -28.9 -15.65 z" stroke-linecap="round" />
+</g>
+		<g transform="matrix(0.95 0.32 -0.32 0.95 44.9 5.22)" id="path7589"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 6; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-102.45, -67.72)" d="m 116.09 67.721 a 13.643 18.109 0 1 1 -27.284 0 a 13.643 18.109 0 1 1 27.284 0 z" stroke-linecap="round" />
+</g>
+		<g transform="matrix(1 0 0 1 -16.08 -39.94)" id="path7593"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 4; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-47.92, -24.06)" d="m 47.628 7.4419 c 15.257 15.917 -14.094 16.96 0 33.24" stroke-linecap="round" />
+</g>
+		<g transform="matrix(1 0 0 1 -6.16 -39.44)" id="path7595"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 4; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-124.22, -415.88)" d="m 123.93 399.26 c 15.26 15.92 -14.09 16.96 0 33.24" stroke-linecap="round" />
+</g>
+		<g transform="matrix(1 0 0 1 4.76 -39.44)" id="path7597"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 4; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-135.14, -415.88)" d="m 134.85 399.26 c 15.25 15.92 -14.1 16.96 0 33.24" stroke-linecap="round" />
+</g>
+</g>
+</g>
+</svg>
