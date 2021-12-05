@@ -153,11 +153,11 @@ const Navbar = () => {
                   </Button>
                 </Link>
               </Grid>
-              <Grid item className={classes.category}>
+              {/* <Grid item className={classes.category}>
                 <Link to="" className={classes.categorylink}>
                   Categories
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Grid container spacing={3}>
                   <Grid item>

@@ -58,10 +58,17 @@ const MainLogobody = ({ storedLogo }) => {
     <>
       <Header setUndoRedo={setUndoRedo} setDownload={setDownload} />
       <Grid container className={classes.grid}>
-        <Grid item sm={1} md={1} className={classes.leftsidebar}>
+        <Grid item xs={1} sm={1} md={1} className={classes.leftsidebar}>
           <Leftsidebar setContent={setContent} setIconType={setIconType} />
         </Grid>
-        <Grid item sm={5} md={4} lg={3} className={classes.middlesidebar}>
+        <Grid
+          item
+          xs={2}
+          sm={2}
+          md={2}
+          lg={3}
+          className={classes.middlesidebar}
+        >
           <MiddleSidebar
             content={content}
             setText={setText}
@@ -71,7 +78,7 @@ const MainLogobody = ({ storedLogo }) => {
             setBackgroundColor={setBackgroundColor}
           />
         </Grid>
-        <Grid item sm={5} md={7} lg={5} className={classes.canvas}>
+        <Grid item xs={6} sm={5} md={5} lg={5} className={classes.canvas}>
           <Canvas
             text={text}
             setText={setText}
@@ -90,7 +97,7 @@ const MainLogobody = ({ storedLogo }) => {
             storedLogo={storedLogo}
           />
         </Grid>
-        <Grid item sm={1} md={7} lg={3} className={classes.rightsidebar}>
+        <Grid item xs={3} sm={4} md={4} lg={3} className={classes.rightsidebar}>
           <RightSidebar
             svgText={svgText}
             setSvgText={setSvgText}

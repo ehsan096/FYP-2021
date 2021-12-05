@@ -5,7 +5,7 @@ import {
   foodJson4,
   foodJson5,
   foodJson6,
-} from "./JsonLogo/foodJson";
+} from "../../LogoSubCategory/JsonLogo/foodJson";
 import {
   animalJson1,
   animalJson2,
@@ -13,7 +13,7 @@ import {
   animalJson4,
   animalJson5,
   animalJson6,
-} from "./JsonLogo/animalJson";
+} from "../../LogoSubCategory/JsonLogo/animalJson";
 import {
   businessJson1,
   businessJson2,
@@ -21,7 +21,7 @@ import {
   businessJson4,
   businessJson5,
   businessJson6,
-} from "./JsonLogo/businessJson";
+} from "../../LogoSubCategory/JsonLogo/businessJson";
 import {
   eduJson1,
   eduJson2,
@@ -29,7 +29,7 @@ import {
   eduJson4,
   eduJson5,
   eduJson6,
-} from "./JsonLogo/educationJson";
+} from "../../LogoSubCategory/JsonLogo/educationJson";
 import {
   fashionJson1,
   fashionJson2,
@@ -37,7 +37,7 @@ import {
   fashionJson4,
   fashionJson5,
   fashionJson6,
-} from "./JsonLogo/fashionJson";
+} from "../../LogoSubCategory/JsonLogo/fashionJson";
 import {
   letterJson1,
   letterJson2,
@@ -45,7 +45,7 @@ import {
   letterJson4,
   letterJson5,
   letterJson6,
-} from "./JsonLogo/letterJson";
+} from "../../LogoSubCategory/JsonLogo/letterJson";
 import {
   medicalJson1,
   medicalJson2,
@@ -53,7 +53,7 @@ import {
   medicalJson4,
   medicalJson5,
   medicalJson6,
-} from "./JsonLogo/medicalJson";
+} from "../../LogoSubCategory/JsonLogo/medicalJson";
 import {
   sportJson1,
   sportJson2,
@@ -61,10 +61,24 @@ import {
   sportJson4,
   sportJson5,
   sportJson6,
-} from "./JsonLogo/sportJson";
+} from "../../LogoSubCategory/JsonLogo/sportJson";
 
-import { food1, food2, food3, food4, food5, food6 } from "./food";
-import { animal1, animal2, animal3, animal4, animal5, animal6 } from "./animal";
+import {
+  food1,
+  food2,
+  food3,
+  food4,
+  food5,
+  food6,
+} from "../../LogoSubCategory/food";
+import {
+  animal1,
+  animal2,
+  animal3,
+  animal4,
+  animal5,
+  animal6,
+} from "../../LogoSubCategory/animal";
 import {
   business1,
   business2,
@@ -72,7 +86,7 @@ import {
   business4,
   business5,
   business6,
-} from "./business";
+} from "../../LogoSubCategory/business";
 import {
   education1,
   education2,
@@ -80,7 +94,7 @@ import {
   education4,
   education5,
   education6,
-} from "./education";
+} from "../../LogoSubCategory/education";
 
 import {
   fashion1,
@@ -89,9 +103,16 @@ import {
   fashion4,
   fashion5,
   fashion6,
-} from "./fashion";
+} from "../../LogoSubCategory/fashion";
 
-import { letter1, letter2, letter3, letter4, letter5, letter6 } from "./letter";
+import {
+  letter1,
+  letter2,
+  letter3,
+  letter4,
+  letter5,
+  letter6,
+} from "../../LogoSubCategory/letter";
 import {
   medical1,
   medical2,
@@ -99,8 +120,15 @@ import {
   medical4,
   medical5,
   medical6,
-} from "./medical";
-import { sport1, sport2, sport3, sport4, sport5, sport6 } from "./sport";
+} from "../../LogoSubCategory/medical";
+import {
+  sport1,
+  sport2,
+  sport3,
+  sport4,
+  sport5,
+  sport6,
+} from "../../LogoSubCategory/sport";
 
 export const categories = [
   {

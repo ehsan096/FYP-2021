@@ -53,7 +53,7 @@ const Header = () => {
             </>
           ) : (
             <Grid container justifyContent="space-around">
-              <Grid item md={1}>
+              {/* <Grid item md={1}>
                 <Link to="/selectlogo" className={classes.makelogolink}>
                   <Button
                     variant="outlined"
@@ -63,7 +63,7 @@ const Header = () => {
                     Template
                   </Button>
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item></Grid>
               <Grid item>
                 <Grid container>
@@ -83,7 +83,7 @@ const Header = () => {
 
               <Grid item>
                 <Grid container spacing={3}>
-                  <Grid item>
+                  {/* <Grid item>
                     <Link to="/download" className={classes.loginlink}>
                       <Button
                         className={classes.startfromscratch}
@@ -96,7 +96,7 @@ const Header = () => {
                         Start from Scratch
                       </Button>
                     </Link>
-                  </Grid>
+                  </Grid> */}
                   <Grid item>
                     <Link to="/signup" className={classes.signuplink}>
                       <Button

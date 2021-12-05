@@ -15,6 +15,7 @@ import forth from "../../../images/animal/4.png";
 import five from "../../../images/animal/5.png";
 import six from "../../../images/animal/6.png";
 import { useStyle } from "./RightsidebarStyle";
+import { Logoos } from "../../LogoSubCategory/DumyData";
 
 const Rightsidebar = () => {
   const classes = useStyle();
@@ -26,66 +27,24 @@ const Rightsidebar = () => {
         justifyContent="center"
         className={classes.grid}
       >
-        <Grid item xs={12} sm={6} md={6} lg={4}>
-          <div>
-            <Card>
-              <CardActionArea>
-                <CardMedia image={first} className={classes.media} />
-                <Divider />
-              </CardActionArea>
-            </Card>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6} lg={4}>
-          <div>
-            <Card className={classes.grid}>
-              <CardActionArea>
-                <CardMedia image={second} className={classes.media} />
-                <Divider />
-              </CardActionArea>
-            </Card>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6} lg={4}>
-          <div>
-            <Card className={classes.grid}>
-              <CardActionArea>
-                <CardMedia image={third} className={classes.media} />
-                <Divider />
-              </CardActionArea>
-            </Card>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6} lg={4}>
-          <div>
-            <Card className={classes.grid}>
-              <CardActionArea>
-                <CardMedia image={forth} className={classes.media} />
-                <Divider />
-              </CardActionArea>
-            </Card>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6} lg={4}>
-          <div>
-            <Card className={classes.grid}>
-              <CardActionArea>
-                <CardMedia image={five} className={classes.media} />
-                <Divider />
-              </CardActionArea>
-            </Card>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6} lg={4}>
-          <div>
-            <Card className={classes.grid}>
-              <CardActionArea>
-                <CardMedia image={six} className={classes.media} />
-                <Divider />
-              </CardActionArea>
-            </Card>
-          </div>
-        </Grid>
+        {Logoos.map((logoo, index) => {
+          return (
+            <Grid key={index} item xs={12} sm={6} md={6} lg={4}>
+              <Card>
+                <CardActionArea>
+                  <CardMedia
+                    image={`data:image/svg+xml;base64,${btoa(
+                      unescape(encodeURIComponent(logoo.image))
+                    )}`}
+                    className={classes.media}
+                  />
+                  <Divider />
+                </CardActionArea>
+                {/* console.log("logo here ",{logo.image}) */}
+              </Card>
+            </Grid>
+          );
+        })}
       </Grid>
     </div>
   );

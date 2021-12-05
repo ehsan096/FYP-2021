@@ -37,7 +37,7 @@ const CategoryBanner = ({ title, paragraph }) => {
         </Grid>
         <Grid container justifyContent="center">
           <Grid item>
-            <Link to="/logo" className={classes.makelogolink}>
+            <Link to="/selectlogo" className={classes.makelogolink}>
               <Button
                 size="large"
                 color="primary"

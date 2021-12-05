@@ -24,9 +24,9 @@ export const useStyle = makeStyles((theme) => ({
     fontSize: "2rem",
   },
   [theme.breakpoints.only("xs")]: {
-    leftsidebar: {
-      marginLeft: "-0.7rem",
-    },
+    // leftsidebar: {
+    //   marginLeft: "-0.7rem",
+    // },
   },
   [theme.breakpoints.only("sm")]: {
     leftsidebar: {

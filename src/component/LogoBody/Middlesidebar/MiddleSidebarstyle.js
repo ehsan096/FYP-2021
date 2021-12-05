@@ -141,12 +141,12 @@ export const useStyle = makeStyles((theme) => ({
   },
   [theme.breakpoints.only("xs")]: {
     middlesidebar: {
-      display: "none",
+      marginLeft: "-18px",
     },
   },
   [theme.breakpoints.only("sm")]: {
     middlesidebar: {
-      marginLeft: "-1.5rem",
+      // marginLeft: "-1.5rem",
     },
   },
   [theme.breakpoints.only("md")]: {

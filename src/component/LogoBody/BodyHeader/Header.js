@@ -139,7 +139,7 @@ const Header = ({ setUndoRedo, setDownload }) => {
           ) : (
             <Grid container justifyContent="space-around">
               <Grid item md={1}>
-                <Link to="/logo" className={classes.makelogolink}>
+                <Link to="/selectlogo" className={classes.makelogolink}>
                   <Button
                     variant="outlined"
                     size="medium"

@@ -14,6 +14,10 @@ export const useStyle = makeStyles((theme) => ({
   },
   canvas: {
     backgroundColor: "#EDEDED",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   rightsidebar: {
     backgroundColor: "#69DADB",
@@ -22,9 +26,27 @@ export const useStyle = makeStyles((theme) => ({
     maxHeight: "36rem",
   },
   [theme.breakpoints.only("xs")]: {
-    canvas: {
-      backgroundColor: "white",
-      marginLeft: "-0.9rem",
+    rightsidebar: {
+      // display: "none",
     },
+  },
+  [theme.breakpoints.only("md")]: {
+    canvas: {
+      // marginLeft: "1rem",
+      // width: "410px",
+      // height: "410px",
+      postion: "absolute",
+      top: "30px",
+    },
+  },
+  [theme.breakpoints.only("md")]: {
+    rightsidebar: {
+      // marginLeft: "px",
+    },
+  },
+  [theme.breakpoints.only("sm")]: {
+    // canvas: {
+    //   width: "200px",
+    // },
   },
 }));

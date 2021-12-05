@@ -101,15 +101,24 @@ export const useStyle = makeStyles((theme) => ({
     position: "relative",
     top: 19,
   },
+  MobileIcon: {
+    marginRight: "10px",
+    display: "none",
+  },
 
   [theme.breakpoints.only("xs")]: {
     rightsidebar: {
-      marginLeft: "-0.7rem",
+      // display: "none",
     },
   },
   [theme.breakpoints.only("sm")]: {
-    rightsidebar: {
-      marginLeft: "-2.9rem",
+    buttonicon: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: "30px",
     },
+  },
+  [theme.breakpoints.only("md")]: {
+    rightsidebar: {},
   },
 }));

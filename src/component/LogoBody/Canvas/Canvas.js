@@ -11,7 +11,6 @@ import { useStyle } from "./CanvasStyle";
 import React, { useEffect, useState, useRef } from "react";
 import Input from "@material-ui/core/Input";
 
-
 // import "./body.styles.css";
 import { saveAs } from "file-saver";
 import { fabric } from "fabric";
@@ -32,7 +31,7 @@ const Canvas = ({
   setObjectSelection,
   setBackgroundColor,
   backgroundColor,
-  storedLogo
+  storedLogo,
 }) => {
   const classes = useStyle();
   const [canvas, setCanvas] = useState(false);
@@ -43,10 +42,9 @@ const Canvas = ({
   const [objects, setObjects] = useState(null);
   const [hw, setHw] = useState({
     width: 400,
-    height:400,
+    height: 400,
     initial: true,
   });
-  
 
   const jsonn = `
   {"version":"4.6.0","objects":[{"type":"rect","version":"4.6.0","originX":"left","originY":"top","left":66.55,"top":62.86,"width":271.07,"height":174.33,"fill":"rgb(216,216,216)","stroke":"","strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeUniform":false,"strokeMiterLimit":4,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","skewX":0,"skewY":0,"rx":0,"ry":0},{"type":"ellipse","version":"4.6.0","originX":"left","originY":"top","left":108.69,"top":105.96,"width":179.12,"height":88.12,"fill":"rgb(41,3,3)","stroke":"","strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeUniform":false,"strokeMiterLimit":4,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","skewX":0,"skewY":0,"rx":89.559,"ry":44.061},{"type":"i-text","version":"4.6.0","originX":"left","originY":"top","left":135.74,"top":142.74,"width":134.29,"height":18.08,"fill":"rgb(255,255,255)","stroke":"","strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeUniform":false,"strokeMiterLimit":4,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","skewX":0,"skewY":0,"fontFamily":"Arial, sans-serif","fontWeight":"normal","fontSize":16,"text":"Muhammad Ehsan","underline":false,"overline":false,"linethrough":false,"textAlign":"left","fontStyle":"normal","lineHeight":1.16,"textBackgroundColor":"","charSpacing":0,"styles":{},"direction":"ltr","path":null,"pathStartOffset":0,"pathSide":"left"},{"type":"i-text","version":"4.6.0","originX":"left","originY":"top","left":103.91,"top":243.61,"width":193.63,"height":30.28,"fill":"rgb(199,23,23)","stroke":"","strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeUniform":false,"strokeMiterLimit":4,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":0.7,"shadow":null,"visible":true,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","skewX":0,"skewY":0,"fontFamily":"Arial, sans-serif","fontWeight":"normal","fontSize":26.8,"text":"Comapny Name","underline":false,"overline":false,"linethrough":true,"textAlign":"left","fontStyle":"italic","lineHeight":1.16,"textBackgroundColor":"","charSpacing":0,"styles":{},"direction":"ltr","path":null,"pathStartOffset":0,"pathSide":"left"}]}
@@ -6055,7 +6053,7 @@ const Canvas = ({
     // });
     let closingTags = str.match(/(<\/?\w+>)/g);
     console.log("Closing tag > ", closingTags ? true : false);
-    
+
     canvas.setDimensions({ width: 400, height: 400 });
     closingTags
       ? fabric.loadSVGFromString(str, function (objects, options) {
@@ -6064,7 +6062,7 @@ const Canvas = ({
           // let svg = document.getElementById('svg-logo');
           // let svgWidth = svg.viewBox.baseVal.width;
           // let svgHeight = svg.viewBox.baseVal.height;
-          
+
           // var svgg = fabric.util.groupSVGElements(objects,options);
           // // svg.center();
           // svgg.set({
@@ -6117,15 +6115,15 @@ const Canvas = ({
           canvas.renderAll.bind(canvas),
           function (objects, options) {
             // fabric.log(o, object);
-            
-          // canvas.add(svgg).renderAll();
+
+            // canvas.add(svgg).renderAll();
             // canvas.setDimensions({ width: 300, height: 300 });
             console.log("objects  canvas obj> ", canvas.toSVG());
           }
         );
     // });
     canvas.renderAll();
-    setObjects(canvas.getObjects())
+    setObjects(canvas.getObjects());
     setOriginalCanvas(canvas.historyUndo.length);
     console.log("Canvas obj > ", canvas);
 
@@ -6133,12 +6131,11 @@ const Canvas = ({
   };
   //initialize SVG string into Canvas
   useEffect(() => {
-    if(storedLogo){
-      console.log("storedLogo in Body", storedLogo )
-    initialize(storedLogo);
-    }else{
-      
-    initialize(str);
+    if (storedLogo) {
+      console.log("storedLogo in Body", storedLogo);
+      initialize(storedLogo);
+    } else {
+      initialize(str);
     }
     // let obj = canvas.getObjects();
     // var svgg = fabric.util.groupSVGElements(obj);
@@ -6159,20 +6156,18 @@ const Canvas = ({
     // };
   }, [storedLogo]);
 
-  useEffect(()=>{
-    if(canvas){
-      if(hw){
-          canvas.setDimensions({ width: hw.width, height: hw.height });
+  useEffect(() => {
+    if (canvas) {
+      if (hw) {
+        canvas.setDimensions({ width: hw.width, height: hw.height });
         canvas.renderAll();
-        
-        
       }
     }
-  },[hw])
+  }, [hw]);
 
-  useEffect(()=>{
-    if(canvas){
-      canvas.on('mouse:wheel', function(opt) {
+  useEffect(() => {
+    if (canvas) {
+      canvas.on("mouse:wheel", function (opt) {
         var delta = opt.e.deltaY;
         var zoom = canvas.getZoom();
         zoom *= 0.999 ** delta;
@@ -6182,10 +6177,9 @@ const Canvas = ({
         opt.e.preventDefault();
         opt.e.stopPropagation();
         canvas.fire("object:modified");
-      })
+      });
     }
-  })
-
+  });
 
   // useEffect(()=>{
   //   if(objects){
@@ -6737,7 +6731,7 @@ const Canvas = ({
         saveAs(
           new Blob([canvas.toSVG()], { type: "image/svg+xml" }),
           `logo.svg`
-       );
+        );
         // var json = canvas.toJSON();
         // saveAs(
         //   new Blob([JSON.stringify(json)], { type: "txt/JSON" }),
@@ -6773,12 +6767,12 @@ const Canvas = ({
     if (hw.width < 100) {
       setHw({
         ...hw,
-        width: 100
+        width: 100,
       });
     } else if (hw.width > 450) {
       setHw({
         ...hw,
-        width: 550
+        width: 550,
       });
     }
   };
@@ -6786,35 +6780,36 @@ const Canvas = ({
     if (hw.height < 100) {
       setHw({
         ...hw,
-        height: 100
+        height: 100,
       });
     } else if (hw.height > 450) {
       setHw({
         ...hw,
-        height: 550
+        height: 550,
       });
     }
   };
 
   return (
-    <>
-    <Grid container spacing={0}
-    direction="column"
-    alignItems="center"
-    justifyContent="center"
-    style={{ minHeight: '100vh' }}
-    >
-      <Grid item xs={6} sm={12} md={9} lg={8}>
-        <Paper elevation={3} className={classes.paper}>
-          <canvas id="a"  />
-          
-        </Paper>
-        
+    <div className={classes.canvasgrid}>
+      <Grid
+        container
+        // spacing={0}
+        // direction="column"
+        // alignItems="center"
+        // justifyContent="center"
+        className={classes.mainGrid}
+        // style={{ minHeight: "10vh" }}
+      >
+        <Grid item xs={6} sm={12} md={9} lg={8}>
+          <Paper elevation={3} className={classes.paper}>
+            <canvas id="a" className={classes.logocontent} />
+          </Paper>
+        </Grid>
       </Grid>
-    </Grid>
-    <div className={classes.ResParent}>
-    <Paper elevation={3} className={classes.Resulation}>
-            <h4>Resolution</h4>
+      <div className={classes.ResParent}>
+        <Paper elevation={3} className={classes.Resulation}>
+          <h4>Resolution</h4>
           <Input
             className={classes.widthRes}
             value={hw.width}
@@ -6823,31 +6818,8 @@ const Canvas = ({
             onChange={(event) => {
               setHw({
                 ...hw,
-                width: 
-                  event.target.value === ""
-                    ? ""
-                    : Number(event.target.value),
-              });
-            }}
-            inputProps={{
-              step: 10,
-              min: 100,
-              max: 450,
-              type: "number",
-            }}
-          /> 
-          <Input
-            className={classes.widthRes}
-            value={hw.height}
-            margin="dense"
-            onBlur={handleBlurHeight}
-            onChange={(event) => {
-              setHw({
-                ...hw,
-                height: 
-                  event.target.value === ""
-                    ? ""
-                    : Number(event.target.value),
+                width:
+                  event.target.value === "" ? "" : Number(event.target.value),
               });
             }}
             inputProps={{
@@ -6857,9 +6829,28 @@ const Canvas = ({
               type: "number",
             }}
           />
-          </Paper>
+          <Input
+            className={classes.widthRes}
+            value={hw.height}
+            margin="dense"
+            onBlur={handleBlurHeight}
+            onChange={(event) => {
+              setHw({
+                ...hw,
+                height:
+                  event.target.value === "" ? "" : Number(event.target.value),
+              });
+            }}
+            inputProps={{
+              step: 10,
+              min: 100,
+              max: 450,
+              type: "number",
+            }}
+          />
+        </Paper>
+      </div>
     </div>
-    </>
   );
 };
 
