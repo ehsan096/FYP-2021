@@ -19,7 +19,7 @@ import { useParams } from "react-router-dom";
 const Logos = ({ setLogo, title, Logoos }) => {
   console.log("Logoos > ", Logoos);
   const { variable } = useParams();
-  // console.log("Logoos > ", Logoos);
+
   const classes = useStyle();
   return (
     <div>
