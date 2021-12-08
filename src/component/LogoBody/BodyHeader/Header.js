@@ -28,7 +28,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FiDownload } from "react-icons/fi";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import DrawerComponent from "./DrawerComponent";
-const Header = ({ setUndoRedo, setDownload }) => {
+const Header = ({ setUndoRedo, setDownload, preview }) => {
   const [downloadmenu, setDownloadmenu] = React.useState(null);
   const open = Boolean(downloadmenu);
   const handleClick = (event) => {
@@ -50,9 +50,6 @@ const Header = ({ setUndoRedo, setDownload }) => {
     setPreviewopen(false);
     setSelectedValue(value);
   };
-  //Hooks
-  const [value, setValue] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
 
   const classes = useStyles();
 
@@ -60,26 +57,11 @@ const Header = ({ setUndoRedo, setDownload }) => {
 
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const handleClickTab = (e, newValue) => {
-    //The second value contains the current index
-    setValue(newValue);
-  };
-
-  const handleOpenMenu = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
   function SimpleDialog(props) {
     const { onClose, selectedValue, open } = props;
 
     const handleClose = () => {
       onClose(selectedValue);
-    };
-
-    const handleListItemClick = (value) => {
-      onClose(value);
     };
 
     return (
@@ -100,8 +82,11 @@ const Header = ({ setUndoRedo, setDownload }) => {
           <Grid item lg={6}>
             <Box>
               <img src={shirtlogo} alt="" className={classes.tshirt} />
+
               <img
-                src={placeshirtlogo}
+                src={`data:image/svg+xml;base64,${btoa(
+                  unescape(encodeURIComponent(preview))
+                )}`}
                 alt=""
                 className={classes.placeshirtlogo}
               />
@@ -110,7 +95,9 @@ const Header = ({ setUndoRedo, setDownload }) => {
           <Grid item lg={6}>
             <img src={laptoplogo} alt="" className={classes.laptop} />
             <img
-              src={placeshirtlogo}
+              src={`data:image/svg+xml;base64,${btoa(
+                unescape(encodeURIComponent(preview))
+              )}`}
               alt=""
               className={classes.placelaptoplogo}
             />

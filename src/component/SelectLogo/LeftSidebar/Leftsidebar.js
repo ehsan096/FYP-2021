@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Typography,
   TextField,
@@ -11,25 +11,13 @@ import { useStyle } from "./Leftsidebarstyle";
 import DrawerComponent from "./DrawerComponent";
 
 const Leftsidebar = () => {
-  const [value, setValue] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
+  // const [value, setValue] = useState(0);
+  // const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyle();
   const theme = useTheme(); //Get a copy of our default theme in our component so that we can access the breakpoints and pass the useMediaQuery
 
   const isMatch = useMediaQuery(theme.breakpoints.down("xs"));
 
-  //Functions
-  const handleClickTab = (e, newValue) => {
-    //The second value contains the current index
-    setValue(newValue);
-  };
-
-  const handleOpenMenu = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
   return (
     <div>
       <Typography className={classes.searchtemplate}>

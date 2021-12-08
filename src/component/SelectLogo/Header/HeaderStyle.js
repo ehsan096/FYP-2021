@@ -85,7 +85,6 @@ export const useStyles = makeStyles((theme) => ({
     color: "white",
     fontWeight: "600",
     marginTop: "0.5rem",
-    backgroundColor: "#2ac5b3",
     "&:hover": {
       background: "#2ac5b3",
     },

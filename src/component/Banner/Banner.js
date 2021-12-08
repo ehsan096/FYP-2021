@@ -68,18 +68,16 @@ const Banner = () => {
         <Grid container justifyContent="center">
           <Grid item>
             <img src={laptopimage} className={classes.image} />
-            {/* <Grid>
-            <Grid item>
-              <video
-                
-                className={classes.media}
-                autoPlay={true}
-                src={demovideo}
-                type="video/mp4"
-              ></video>
-             
+            <Grid>
+              <Grid item>
+                <video
+                  className={classes.media}
+                  autoPlay={true}
+                  src={demovideo}
+                  type="video/mp4"
+                ></video>
+              </Grid>
             </Grid>
-          </Grid> */}
           </Grid>
         </Grid>
       </Container>

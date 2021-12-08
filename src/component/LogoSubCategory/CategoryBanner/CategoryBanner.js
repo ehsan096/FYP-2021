@@ -1,10 +1,4 @@
-import {
-  Container,
-  Grid,
-  Typography,
-  Button,
-  CardMedia,
-} from "@material-ui/core";
+import { Container, Grid, Typography, Button } from "@material-ui/core";
 import React from "react";
 import { useStyle } from "./CategoryBannerStyle";
 // import demoimage from "../../images/laptop.png";

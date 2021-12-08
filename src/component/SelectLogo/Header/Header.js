@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   AppBar,
-  Typography,
   Button,
   useMediaQuery,
   Toolbar,
@@ -11,34 +10,14 @@ import {
 import { Link } from "react-router-dom";
 import { useStyles } from "./HeaderStyle";
 import { FcStumbleupon } from "react-icons/fc";
-import { MdContentCopy } from "react-icons/md";
 import DrawerComponent from "./DrawerComponent";
 
 const Header = () => {
-  //Hooks
-  const [value, setValue] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
-  //Boolean(anchorEl) This is use to convert a null value in to a boolean
-  //anchorEl Is us to set the position of the menu
-
   const classes = useStyles();
 
   const theme = useTheme(); //Get a copy of our default theme in our component so that we can access the breakpoints and pass the useMediaQuery
 
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
-
-  //Functions
-  const handleClickTab = (e, newValue) => {
-    //The second value contains the current index
-    setValue(newValue);
-  };
-
-  const handleOpenMenu = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <>

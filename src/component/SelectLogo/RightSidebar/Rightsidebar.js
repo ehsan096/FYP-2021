@@ -4,16 +4,14 @@ import {
   CardActionArea,
   Divider,
   CardMedia,
-  CardContent,
-  Typography,
 } from "@material-ui/core";
 import React from "react";
-import first from "../../../images/animal/1.png";
-import second from "../../../images/animal/2.png";
-import third from "../../../images/animal/3.png";
-import forth from "../../../images/animal/4.png";
-import five from "../../../images/animal/5.png";
-import six from "../../../images/animal/6.png";
+// import first from "../../../images/animal/1.png";
+// import second from "../../../images/animal/2.png";
+// import third from "../../../images/animal/3.png";
+// import forth from "../../../images/animal/4.png";
+// import five from "../../../images/animal/5.png";
+// import six from "../../../images/animal/6.png";
 import { useStyle } from "./RightsidebarStyle";
 import { Logoos } from "../../LogoSubCategory/DumyData";
 

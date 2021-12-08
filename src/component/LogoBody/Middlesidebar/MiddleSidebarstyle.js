@@ -49,7 +49,7 @@ export const useStyle = makeStyles((theme) => ({
     marginLeft: "1rem",
   },
   shapegrid: {
-    // marginLeft: "10px",
+    marginLeft: "10px",
   },
   shapes: {
     // marginLeft: "-20px",
@@ -79,20 +79,6 @@ export const useStyle = makeStyles((theme) => ({
     marginTop: "0.2rem",
   },
 
-  text: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-
-    // h1: {
-    //   cursor: "pointer",
-    // },
-    // h3: {
-    //   cursor: "pointer",
-    // },
-  },
-
   star: {
     fontSize: "2.5rem",
     color: "#9E2CFF",
@@ -100,6 +86,11 @@ export const useStyle = makeStyles((theme) => ({
     width: "3rem",
   },
   text: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+
     textAlign: "center",
     fontSize: "1rem",
     color: "black",

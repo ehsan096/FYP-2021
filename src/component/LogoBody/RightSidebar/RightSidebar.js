@@ -1,11 +1,11 @@
 import { useStyle } from "./RightSidebarStyle";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Typography from "@material-ui/core/Typography";
+// import ListItemIcon from "@material-ui/core/ListItemIcon";
+// import Typography from "@material-ui/core/Typography";
 import Fonts from "./font";
 import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
@@ -18,8 +18,6 @@ import { BsFillLayersFill } from "react-icons/bs";
 import { IoDuplicateSharp } from "react-icons/io5";
 import { BiCaretDown } from "react-icons/bi";
 import { BiCaretUp } from "react-icons/bi";
-import { FaTimes } from "react-icons/fa";
-import { FaBars } from "react-icons/fa";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { CgArrowLongLeft } from "react-icons/cg";
 

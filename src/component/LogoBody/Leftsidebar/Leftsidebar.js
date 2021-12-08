@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import TitleIcon from "@material-ui/icons/Title";
 import AllOutIcon from "@material-ui/icons/AllOut";
 import TextureIcon from "@material-ui/icons/Texture";
-import { Button, Tabs, Tab, Typography } from "@material-ui/core";
+import { Tabs, Tab } from "@material-ui/core";
 import { Link } from "react-router-dom";
 const Leftsidebar = ({ setContent, setIconType }) => {
   const classes = useStyle();

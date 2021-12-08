@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import { useStyle } from "./MiddleSidebarstyle";
 import { Link } from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import SearchIcon from "@material-ui/icons/Search";
-import DeleteIcon from "@material-ui/icons/Delete";
 import SolidColor from "./colors/solidColors";
-import {
-  Grid,
-  Typography,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-} from "@material-ui/core";
+import { Grid, Typography, Checkbox } from "@material-ui/core";
 
 import Logos from "./Icons";
 import { Circle } from "./AllIcons/Cricle";
@@ -27,10 +17,7 @@ import { Leaf } from "./AllIcons/Leaf";
 import { Facebook } from "./AllIcons/Facebook";
 import { Game } from "./AllIcons/Game";
 import { Letter } from "./AllIcons/Letter";
-import { Badge, Outlineshape } from "./Shape/Shape";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
-import { FireplaceOutlined } from "@material-ui/icons";
+import { Badge } from "./Shape/Shape";
 import { ReactComponent as ReactLogo } from "./icon.svg";
 import { ColorPicker } from "material-ui-color";
 

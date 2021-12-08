@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   List,
   ListItem,
-  ListItemIcon,
   IconButton,
-  ListItemText,
   makeStyles,
   Drawer,
   Button,
@@ -80,7 +78,6 @@ const DrawerComponent = () => {
       color: "white",
       fontWeight: "600",
       marginTop: "0.5rem",
-      backgroundColor: "#2ac5b3",
       "&:hover": {
         background: "#2ac5b3",
       },

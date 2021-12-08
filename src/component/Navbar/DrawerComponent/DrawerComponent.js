@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   List,
   ListItem,
-  ListItemIcon,
   IconButton,
-  ListItemText,
   makeStyles,
   Drawer,
   Button,

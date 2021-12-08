@@ -21,14 +21,14 @@ export const useStyle = makeStyles((theme) => ({
   paragraph: {
     color: "#f6f7f5",
     fontFamily: "'Poppins', sans-serif;",
-    fontFamily: "500",
+    fontWeight: "500",
     marginBottom: "0.1rem",
     textShadow: "0 3px 4px rgb(0 0 0 / 22%)",
   },
   paragraph1: {
     color: "#f6f7f5",
     fontFamily: "'Poppins', sans-serif;",
-    fontFamily: "500",
+    fontWeight: "500",
     marginBottom: "3rem",
     textShadow: "0 3px 4px rgb(0 0 0 / 22%)",
   },

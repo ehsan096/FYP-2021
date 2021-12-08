@@ -12,9 +12,6 @@ export const useStyle = makeStyles((theme) => ({
   root: {
     width: 150,
   },
-  input: {
-    width: 42,
-  },
   buttonicon: {
     display: "flex",
     justifyContent: "space-between",
@@ -74,6 +71,7 @@ export const useStyle = makeStyles((theme) => ({
     // marginRight: "40px",
   },
   input: {
+    width: 42,
     position: "relative",
     top: 7,
   },

@@ -160,14 +160,15 @@ export const useStyles = makeStyles((theme) => ({
   },
   placeshirtlogo: {
     position: "absolute",
-    left: 145,
-    top: 180,
-    width: "13%",
+    left: 110,
+    top: 130,
+    width: "22%",
+    // backgroundColor: "white",
   },
   placelaptoplogo: {
     position: "absolute",
     left: 540,
     top: 104,
-    width: "6%",
+    width: "4%",
   },
 }));

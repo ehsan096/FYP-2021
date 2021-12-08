@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryBanner from "../component/LogoSubCategory/CategoryBanner/CategoryBanner";
+// import CategoryBanner from "../component/LogoSubCategory/CategoryBanner/CategoryBanner";
 import BannerLogo from "../component/LogoSubCategory/BannerLogo/BannerLogo";
 import Logos from "../component/LogoSubCategory/SubCategoryLogos/Logos";
 import Navbar from "../component/Navbar/Navbar";

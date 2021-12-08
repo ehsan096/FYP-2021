@@ -1,4 +1,4 @@
-import { Grid, Container } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import React from "react";
 import Canvas from "./Canvas/Canvas";
 import Leftsidebar from "./Leftsidebar/Leftsidebar";
@@ -11,6 +11,7 @@ const MainLogobody = ({ storedLogo }) => {
   const classes = useStyle();
 
   const [svgLogo, setSvgLogo] = React.useState(null);
+  const [preview, setPreview] = React.useState(null);
   const [content, setContent] = React.useState("icon");
   const [text, setText] = React.useState("");
   const [iconType, setIconType] = React.useState(null);
@@ -43,8 +44,8 @@ const MainLogobody = ({ storedLogo }) => {
   });
 
   React.useEffect(() => {
-    console.log("Content change > ", content);
-  }, [content]);
+    console.log("preview change > ", preview);
+  }, [preview]);
 
   React.useEffect(() => {
     console.log("Text change > ", text);
@@ -56,7 +57,11 @@ const MainLogobody = ({ storedLogo }) => {
 
   return (
     <>
-      <Header setUndoRedo={setUndoRedo} setDownload={setDownload} />
+      <Header
+        setUndoRedo={setUndoRedo}
+        setDownload={setDownload}
+        preview={preview}
+      />
       <Grid container className={classes.grid}>
         <Grid item xs={1} sm={1} md={1} className={classes.leftsidebar}>
           <Leftsidebar setContent={setContent} setIconType={setIconType} />
@@ -84,6 +89,7 @@ const MainLogobody = ({ storedLogo }) => {
             setText={setText}
             svgText={svgText}
             svgLogo={svgLogo}
+            setSvgLogo={setSvgLogo}
             setSvgText={setSvgText}
             undoRedo={undoRedo}
             setUndoRedo={setUndoRedo}
@@ -95,6 +101,7 @@ const MainLogobody = ({ storedLogo }) => {
             setBackgroundColor={setBackgroundColor}
             backgroundColor={backgroundColor}
             storedLogo={storedLogo}
+            setPreview={setPreview}
           />
         </Grid>
         <Grid item xs={3} sm={4} md={4} lg={3} className={classes.rightsidebar}>
