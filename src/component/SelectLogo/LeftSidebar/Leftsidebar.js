@@ -49,7 +49,12 @@ const Leftsidebar = ({ setCatName, setSearch, search }) => {
           onChange={(event) => setSearch(event.target.value)}
         />
       </form>
-      <Typography className={classes.Categories}>Categories</Typography>
+      <Typography
+        className={classes.Categories}
+        onClick={() => setCatName(null)}
+      >
+        Categories
+      </Typography>
       {isMatch ? (
         <>
           <DrawerComponent />
