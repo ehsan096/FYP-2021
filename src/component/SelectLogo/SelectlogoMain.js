@@ -7,12 +7,6 @@ const SelectlogoMain = ({ setLogo }) => {
   const classes = useStyle();
   const [catName, setCatName] = React.useState(null);
   const [search, setSearch] = React.useState(null);
-  React.useEffect(() => {
-    console.log("CAtName > ", catName);
-  }, [catName]);
-  React.useEffect(() => {
-    console.log("search > ", search);
-  }, [search]);
   return (
     <Grid container className={classes.grid}>
       <Grid item sm={4} md={3} lg={3} className={classes.leftsidebar}>

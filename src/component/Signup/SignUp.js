@@ -27,9 +27,11 @@ const SignUp = () => {
   const [values, setValues] = React.useState({
     amount: "",
     password: "",
+    repeatePassword: "",
     weight: "",
     weightRange: "",
     showPassword: false,
+    showRepeatePassword: false,
   });
 
   const handleChange = (prop) => (event) => {
@@ -38,6 +40,9 @@ const SignUp = () => {
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
+  };
+  const handleClickShowRepeatePassword = () => {
+    setValues({ ...values, showRepeatePassword: !values.showRepeatePassword });
   };
 
   const handleMouseDownPassword = (event) => {
@@ -115,18 +120,22 @@ const SignUp = () => {
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
-                type={values.showPassword ? "text" : "password"}
-                value={values.password}
-                onChange={handleChange("password")}
+                type={values.showRepeatePassword ? "text" : "password"}
+                value={values.repeatePassword}
+                onChange={handleChange("repeatePassword")}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
+                      onClick={handleClickShowRepeatePassword}
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      {values.showRepeatePassword ? (
+                        <Visibility />
+                      ) : (
+                        <VisibilityOff />
+                      )}
                     </IconButton>
                   </InputAdornment>
                 }
@@ -139,7 +148,7 @@ const SignUp = () => {
               size="large"
               className={classes.signbutton}
             >
-              Sign In
+              Sign Up
             </Button>
           </Paper>
         </Grid>
