@@ -5,7 +5,9 @@ import Logos from "../component/LogoSubCategory/SubCategoryLogos/Logos";
 import Navbar from "../component/Navbar/Navbar";
 // import { categories } from "../component/LogoSubCategory/DumyData";
 
-import axios from "axios";
+// import axios from "axios";
+import CategoriesService from "../services/Categories";
+import LogosService from "../services/Logos";
 import { useParams } from "react-router-dom";
 
 const LogoSubCatogory = ({ setLogo }) => {
@@ -14,11 +16,10 @@ const LogoSubCatogory = ({ setLogo }) => {
   const [categories, setCategories] = React.useState([]);
 
   const getCategories = () => {
-    axios
-      .get("http://localhost:4000/api/categories")
-      .then((res) => {
-        setCategories(res.data.categories);
-        console.log("Response >> ", res.data.categories);
+    CategoriesService.getCategories()
+      .then((data) => {
+        setCategories(data.categories);
+        console.log("Response category>> ", data.categories);
       })
       .catch((err) => {
         console.log("Error ", err);
@@ -26,11 +27,10 @@ const LogoSubCatogory = ({ setLogo }) => {
   };
 
   const getLogos = () => {
-    axios
-      .get("http://localhost:4000/api/logos")
-      .then((res) => {
-        setLogoos(res.data);
-        console.log("Response Logos>> ", res.data);
+    LogosService.getLogos()
+      .then((data) => {
+        setLogoos(data);
+        console.log("Response Logos>> ", data);
       })
       .catch((err) => {
         console.log("Error ", err);

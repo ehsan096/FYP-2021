@@ -32,13 +32,14 @@ const Logos = ({ setLogo, title, Logoos }) => {
             ? Logoos.map((logoo, index) =>
                 logoo.category === variable ? (
                   <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                    <Link to="/logo" className={classes.cardlink}>
+                    <Link
+                      to={`/selectlogo/${variable}/${logoo._id}`}
+                      className={classes.cardlink}
+                    >
                       <Card
                         className={classes.grid}
                         onClick={() => {
-                          logoo.logoJson
-                            ? setLogo(logoo.logoJson)
-                            : setLogo(logoo.logoSvg);
+                          setLogo(logoo);
                         }}
                       >
                         <CardActionArea>

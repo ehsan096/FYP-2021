@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -7,6 +7,9 @@ import LogoBodypage from "./pages/LogoBodypage";
 import SelectlogoPage from "./pages/SelectlogoPage";
 import Signuppage from "./pages/Signuppage";
 import LogoSubCatogory from "./pages/LogoSubCatogory";
+// import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [storedLogo, setStoredLogo] = React.useState(null);
@@ -14,30 +17,24 @@ function App() {
   const setLogo = (data) => {
     setStoredLogo(data);
   };
-  useEffect(() => {
-    if (storedLogo) {
-      console.log("storedLogo > ", storedLogo);
-    }
-  }, [storedLogo]);
-
   return (
     <Router>
-      {/* Client Routes */}
-      <Route path="/" exact>
+      <ToastContainer />
+      <Route exact path="/" exact>
         <HomePage />
       </Route>
-      <Route path="/login">
+      <Route exact path="/login">
         <LoginPage />
       </Route>
-      <Route path="/signup">
+      <Route exact path="/signup">
         <Signuppage />
       </Route>
 
-      <Route path="/logo">
+      <Route exact path="/selectlogo/:variable/:logoid">
         <LogoBodypage storedLogo={storedLogo} />
       </Route>
       <Route exact path="/selectlogo">
-        <SelectlogoPage setLogo={setLogo} />
+        <SelectlogoPage storedLogo={storedLogo} setLogo={setLogo} />
       </Route>
       <Route exact path="/selectlogo/:variable">
         <LogoSubCatogory setLogo={setLogo} />

@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import DrawerComponent from "./DrawerComponent/DrawerComponent";
 import { FcStumbleupon } from "react-icons/fc";
 
+import UserService from "../../services/UserService";
+
 const useStyles = makeStyles((theme) => ({
   logo: {
     fontSize: "1rem",
@@ -110,7 +112,7 @@ const Navbar = () => {
   const theme = useTheme(); //Get a copy of our default theme in our component so that we can access the breakpoints and pass the useMediaQuery
 
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const [login, setLogin] = React.useState(false);
   return (
     <>
       <AppBar className={classes.appbar}>
@@ -145,26 +147,43 @@ const Navbar = () => {
               </Grid> */}
               <Grid item>
                 <Grid container spacing={3}>
-                  <Grid item>
-                    <Link to="/login" className={classes.loginlink}>
+                  {!UserService.isLoggedIn() ? (
+                    <>
+                      <Grid item>
+                        <Link to="/login" className={classes.loginlink}>
+                          <Button
+                            className={classes.loginbutton}
+                            variant="contained"
+                          >
+                            Log in{" "}
+                          </Button>
+                        </Link>
+                      </Grid>
+                      <Grid item>
+                        <Link to="signup" className={classes.signuplink}>
+                          <Button
+                            className={classes.signupbutton}
+                            variant="contained"
+                          >
+                            Sign Up
+                          </Button>
+                        </Link>
+                      </Grid>
+                    </>
+                  ) : (
+                    <Grid item>
                       <Button
                         className={classes.loginbutton}
                         variant="contained"
+                        onClick={() => {
+                          UserService.logout();
+                          setLogin(!login);
+                        }}
                       >
-                        Log in{" "}
+                        Logout{" "}
                       </Button>
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link to="signup" className={classes.signuplink}>
-                      <Button
-                        className={classes.signupbutton}
-                        variant="contained"
-                      >
-                        Sign Up
-                      </Button>
-                    </Link>
-                  </Grid>
+                    </Grid>
+                  )}
                 </Grid>
               </Grid>
             </Grid>

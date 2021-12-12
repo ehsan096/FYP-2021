@@ -140,34 +140,34 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
               <Grid item>
                 <Grid container>
                   <Grid item md={8}>
-                    <Link to="/logo" className={classes.makelogolink}>
-                      <Button
-                        variant="outlined"
-                        size="medium"
-                        className={classes.undologo}
-                        onClick={() => {
-                          setUndoRedo("undo");
-                        }}
-                      >
-                        <GrUndo fontSize="large" className={classes.undoicon} />
-                        Undo
-                      </Button>
-                    </Link>
+                    {/* <Link className={classes.makelogolink}> */}
+                    <Button
+                      variant="outlined"
+                      size="medium"
+                      className={classes.undologo}
+                      onClick={() => {
+                        setUndoRedo("undo");
+                      }}
+                    >
+                      <GrUndo fontSize="large" className={classes.undoicon} />
+                      Undo
+                    </Button>
+                    {/* </Link> */}
                   </Grid>
                   <Grid item md={2}>
-                    <Link to="/logo" className={classes.makelogolink}>
-                      <Button
-                        variant="outlined"
-                        size="medium"
-                        className={classes.undologo}
-                        onClick={() => {
-                          setUndoRedo("redo");
-                        }}
-                      >
-                        <GrRedo fontSize="large" className={classes.undoicon} />
-                        Redo
-                      </Button>
-                    </Link>
+                    {/* <Link className={classes.makelogolink}> */}
+                    <Button
+                      variant="outlined"
+                      size="medium"
+                      className={classes.undologo}
+                      onClick={() => {
+                        setUndoRedo("redo");
+                      }}
+                    >
+                      <GrRedo fontSize="large" className={classes.undoicon} />
+                      Redo
+                    </Button>
+                    {/* </Link> */}
                   </Grid>
                 </Grid>
               </Grid>

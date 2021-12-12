@@ -10,6 +10,7 @@ import {
 import { useStyle } from "./CanvasStyle";
 import React, { useEffect, useState, useRef } from "react";
 import Input from "@material-ui/core/Input";
+import { useHistory } from "react-router-dom";
 
 // import "./body.styles.css";
 import { saveAs } from "file-saver";
@@ -42,15 +43,23 @@ const Canvas = ({
   const [originalCanvas, setOriginalCanvas] = useState(null);
   const [count, setCount] = useState(11);
   const [objects, setObjects] = useState(null);
+  const [historypuch, setHistorypush] = useState(true);
   const [hw, setHw] = useState({
     width: 400,
     height: 400,
     initial: true,
   });
+  const history = useHistory();
 
   // const str = JSON.stringify(string);
 
   // str = JSON.stringify(str);
+  useEffect(() => {
+    if (!storedLogo) {
+      history.goBack();
+      setHistorypush(!historypuch);
+    }
+  }, [storedLogo]);
 
   const initialize = (str) => {
     var canvas = new fabric.Canvas("a", {
@@ -178,7 +187,10 @@ const Canvas = ({
   useEffect(() => {
     if (storedLogo) {
       console.log("storedLogo in Body", storedLogo);
-      initialize(storedLogo);
+
+      storedLogo.logoJson
+        ? initialize(storedLogo.logoJson)
+        : initialize(storedLogo.logoSvg);
     }
   }, [storedLogo]);
 
@@ -792,9 +804,9 @@ const Canvas = ({
   }, [download]);
 
   useEffect(() => {
-    console.log("Render >> undoredo");
     if (undoRedo === "undo") {
       funUndo();
+
       setUndoRedo(null);
     } else if (undoRedo === "redo") {
       funRedo();

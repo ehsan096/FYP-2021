@@ -43,18 +43,6 @@ const MainLogobody = ({ storedLogo }) => {
     offsetY: 0,
   });
 
-  React.useEffect(() => {
-    console.log("preview change > ", preview);
-  }, [preview]);
-
-  React.useEffect(() => {
-    console.log("Text change > ", text);
-  }, [text]);
-
-  React.useEffect(() => {
-    console.log("svgLogo change > ", svgLogo);
-  }, [svgLogo]);
-
   return (
     <>
       <Header

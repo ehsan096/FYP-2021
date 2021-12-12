@@ -4,6 +4,7 @@ export const useStyle = makeStyles((theme) => ({
   grid: {
     marginTop: "4rem",
     backgroundColor: "#EDEDED",
+    minHeight: "561px",
   },
   leftsidebar: {
     backgroundColor: "#FAFAFA",

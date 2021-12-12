@@ -44,12 +44,13 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
               search ? (
                 logoo.name.toLowerCase().includes(search.toLowerCase()) ? (
                   <Grid key={index} item xs={12} sm={6} md={6} lg={4}>
-                    <Link to="/logo" className={classes.cardlink}>
+                    <Link
+                      to={`/selectlogo/${logoo.category}/${logoo._id}`}
+                      className={classes.cardlink}
+                    >
                       <Card
                         onClick={() => {
-                          logoo.logoJson
-                            ? setLogo(logoo.logoJson)
-                            : setLogo(logoo.logoSvg);
+                          setLogo(logoo.logoJson);
                         }}
                       >
                         <CardActionArea>
@@ -61,7 +62,6 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                           />
                           <Divider />
                         </CardActionArea>
-                        {/* console.log("logo here ",{logo.image}) */}
                       </Card>
                     </Link>
                   </Grid>
@@ -70,7 +70,10 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                 )
               ) : (
                 <Grid key={index} item xs={12} sm={6} md={6} lg={4}>
-                  <Link to="/logo" className={classes.cardlink}>
+                  <Link
+                    to={`/selectlogo/${logoo.category}/${logoo._id}`}
+                    className={classes.cardlink}
+                  >
                     <Card
                       onClick={() => {
                         logoo.logoJson
@@ -87,7 +90,6 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                         />
                         <Divider />
                       </CardActionArea>
-                      {/* console.log("logo here ",{logo.image}) */}
                     </Card>
                   </Link>
                 </Grid>
@@ -98,7 +100,10 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
           ) : search ? (
             logoo.name.toLowerCase().includes(search.toLowerCase()) ? (
               <Grid key={index} item xs={12} sm={6} md={6} lg={4}>
-                <Link to="/logo" className={classes.cardlink}>
+                <Link
+                  to={`/selectlogo/${logoo.category}/${logoo._id}`}
+                  className={classes.cardlink}
+                >
                   <Card
                     onClick={() => {
                       logoo.logoJson
@@ -115,7 +120,6 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                       />
                       <Divider />
                     </CardActionArea>
-                    {/* console.log("logo here ",{logo.image}) */}
                   </Card>
                 </Link>
               </Grid>
@@ -124,7 +128,10 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
             )
           ) : (
             <Grid key={index} item xs={12} sm={6} md={6} lg={4}>
-              <Link to="/logo" className={classes.cardlink}>
+              <Link
+                to={`/selectlogo/${logoo.category}/${logoo._id}`}
+                className={classes.cardlink}
+              >
                 <Card
                   onClick={() => {
                     logoo.logoJson
@@ -141,7 +148,6 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                     />
                     <Divider />
                   </CardActionArea>
-                  {/* console.log("logo here ",{logo.image}) */}
                 </Card>
               </Link>
             </Grid>
