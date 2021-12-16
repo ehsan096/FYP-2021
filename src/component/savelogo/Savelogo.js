@@ -13,6 +13,7 @@ import Navbar from "../Navbar/Navbar";
 import { useStyle } from "./SavelogoStyle";
 import UserService from "../../services/UserService";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Savelogo = ({ setLogo }) => {
   const classes = useStyle();
@@ -33,12 +34,20 @@ const Savelogo = ({ setLogo }) => {
     e.preventDefault();
     UserService.deleteUserLogo(await UserService.getLoggedInUser()._id, logo)
       .then((res) => {
-        console.log("response > ", res);
+        toast.success(res, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        console.log("response 36> ", res);
+
+        setUpdate(!update);
       })
       .catch((err) => {
-        console.log("error > ", err);
+        toast.err(err.response.data, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+
+        setUpdate(!update);
       });
-    setUpdate(!update);
   };
   return (
     <>

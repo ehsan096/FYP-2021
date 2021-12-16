@@ -31,7 +31,6 @@ const SignUp = () => {
   const history = useHistory();
   const [values, setValues] = React.useState({
     fname: "",
-    lname: "",
     email: "",
     password: "",
     repeatePassword: "",
@@ -59,10 +58,10 @@ const SignUp = () => {
 
     try {
       if (values.password === values.repeatePassword) {
-        let name = values.fname + " " + values.lname;
+        let name = values.fname;
         await userService.register(name, values.email, values.password);
         setLogin(true);
-        history.goBack();
+        history.push("/");
       }
     } catch (e) {
       // alert(e.message);
@@ -85,28 +84,15 @@ const SignUp = () => {
             <Typography className={classes.notregister}>
               Already have an Account? <Link to="/login">Log In</Link>
             </Typography>
-            <Grid container spacing={2} className={classes.FLName}>
-              <Grid item xs={6}>
-                <TextField
-                  className={classes.FirstName}
-                  id="outlined-basic"
-                  label="FirstName*"
-                  variant="outlined"
-                  value={values.fname}
-                  onChange={handleChange("fname")}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  className={classes.LastName}
-                  id="outlined-basic"
-                  label="LastName*"
-                  variant="outlined"
-                  value={values.lname}
-                  onChange={handleChange("lname")}
-                />
-              </Grid>
-            </Grid>
+
+            <TextField
+              className={classes.input}
+              id="outlined-basic"
+              label="Full Name*"
+              variant="outlined"
+              value={values.fname}
+              onChange={handleChange("fname")}
+            />
             <TextField
               className={classes.input}
               id="outlined-basic"

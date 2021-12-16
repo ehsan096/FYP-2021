@@ -25,6 +25,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FiDownload } from "react-icons/fi";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import man from "../../../images/man.jpeg";
 
@@ -61,7 +62,18 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
       if (user.logos.length === 0) {
         console.log("user logo length ===0  ");
 
-        await userService.updateUserLogo(loggedInUser._id, preview.current);
+        await userService
+          .updateUserLogo(loggedInUser._id, preview.current)
+          .then((res) => {
+            toast.success(res, {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          })
+          .catch((err) => {
+            toast.err(err.response.data, {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          });
       } else {
         console.log("user length >1 ", user);
 
@@ -79,13 +91,31 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
         };
         if (i === -1) {
           console.log("user logo could not find index > ");
-          await userService.updateUserLogo(loggedInUser._id, data);
+          await userService
+            .updateUserLogo(loggedInUser._id, data)
+            .then((res) => {
+              toast.success(res, {
+                position: toast.POSITION.TOP_CENTER,
+              });
+            })
+            .catch((err) => {
+              toast.err(err.response.data, {
+                position: toast.POSITION.TOP_CENTER,
+              });
+            });
         } else {
           console.log("user logo findIndex[] > ", logo);
           await userService
             .updateUserLogoExisting(loggedInUser._id, data)
             .then((res) => {
-              console.log("User Response 90 > ", res);
+              toast.success(res, {
+                position: toast.POSITION.TOP_CENTER,
+              });
+            })
+            .catch((err) => {
+              toast.err(err.response.data, {
+                position: toast.POSITION.TOP_CENTER,
+              });
             });
         }
       }
@@ -349,18 +379,6 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
                       </Grid>
                     </>
                   ) : (
-                    // <Grid item>
-                    //   <Button
-                    //     className={classes.loginbutton}
-                    //     variant="contained"
-                    //     onClick={() => {
-                    //       UserService.logout();
-                    //       setLogin(!login);
-                    //     }}
-                    //   >
-                    //     Logout{" "}
-                    //   </Button>
-                    // </Grid>
                     <Grid item>
                       <div
                         className={classes.avatar}
@@ -370,7 +388,9 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
                         onClick={handleClickAnchor}
                       >
                         <Avatar alt="Remy Sharp" src={man} />
-                        <div className="Username">{UserService.getLoggedInUser().name}</div>
+                        <div className="Username">
+                          {UserService.getLoggedInUser().name}
+                        </div>
                       </div>
                       {console.log(
                         "UserService.getLoggedInUser() ",

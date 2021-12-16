@@ -74,6 +74,11 @@ const Canvas = ({
     }
   };
 
+  useEffect(() => {
+    if (canvas && hw) {
+      storedLogoSet();
+    }
+  }, [hw]);
   const initialize = (str) => {
     var canvas = new fabric.Canvas("a", {
       preserveObjectStacking: true,
@@ -189,6 +194,12 @@ const Canvas = ({
           }
         );
     // });
+    console.log(
+      "Canvas height > ",
+      canvas.getHeight(),
+      " Canvas Width > ",
+      canvas.getWidth()
+    );
     canvas.renderAll();
     setObjects(canvas.getObjects());
     setOriginalCanvas(canvas.historyUndo.length);
@@ -204,6 +215,12 @@ const Canvas = ({
         logoJson: canvas.toJSON(),
       };
     }
+
+    setHw({
+      ...hw,
+      width: canvas.getWidth(),
+      height: canvas.getHeight(),
+    });
   };
   //initialize SVG string into Canvas
   useEffect(() => {
@@ -252,8 +269,10 @@ const Canvas = ({
       icon.name = "icone" + 1;
       icon.id = "icon" + count;
       setCount((count) => count + 1);
+
       canvas.add(icon);
       icon.center();
+      icon.setCoords();
       canvas.renderAll();
       console.log("Canvas > ", canvas.toSVG());
       setSvgLogo(null);
@@ -479,10 +498,11 @@ const Canvas = ({
       //   setCount(count + 1);
       // }
 
-      // storedLogoSet();
       settextId(e.target);
       console.log("Hiddent renderrr condition 2 ");
     }
+
+    storedLogoSet();
   }
   function handleCleared() {
     console.log("handleCleared render");
@@ -501,6 +521,14 @@ const Canvas = ({
       });
       canvas.on("object:modified", () => {
         storedLogoSet();
+      });
+      canvas.on("object:added", () => {
+        storedLogoSet();
+        // console.log("Object:added");
+      });
+      canvas.on("object:deleted", () => {
+        storedLogoSet();
+        // console.log("Object:added");
       });
       // return () => {
       //   console.log("canvas off render");

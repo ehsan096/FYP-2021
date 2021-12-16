@@ -10,6 +10,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import userService from "../../services/UserService";
 
+import Navbar from "../Navbar/Navbar";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
@@ -38,11 +39,14 @@ const ChangePassword = () => {
   const [disable, setDisable] = React.useState(true);
   const [change, setChange] = React.useState(true);
 
-  React.useEffect(async () => {
+  const fetchUser = async () => {
     let user = await userService.getSingleUser(
       userService.getLoggedInUser()._id
     );
     setLoggedIn(user);
+  };
+  React.useEffect(() => {
+    fetchUser();
   }, []);
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -93,21 +97,24 @@ const ChangePassword = () => {
           };
           await userService
             .updateUser(loggedIn._id, data)
-            .then((res) => {
-              console.log("Data response > ", res.data);
-              // toast.success("res.data", {
-              //   position: toast.POSITION.TOP_CENTER,
-              // });
+            .then((token) => {
+              localStorage.setItem("token", token);
+              toast.success("Updated Successfuly", {
+                position: toast.POSITION.TOP_CENTER,
+              });
             })
             .catch((e) => {
               toast.error(e.response.data, {
                 position: toast.POSITION.TOP_CENTER,
               });
             });
-          setChange(!change);
+          fetchUser();
           return;
         } else {
-          alert("Password not match");
+          toast.error("Password not match", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          return;
         }
       } else {
         let data = {
@@ -118,17 +125,16 @@ const ChangePassword = () => {
           .updateUser(loggedIn._id, data)
           .then((token) => {
             localStorage.setItem("token", token);
-            console.log("Data response > ", token);
-            // toast.success(res.data, {
-            //   position: toast.POSITION.TOP_CENTER,
-            // });
+            toast.success("Updated Successfuly", {
+              position: toast.POSITION.TOP_CENTER,
+            });
           })
           .catch((e) => {
             toast.error(e.response.data, {
               position: toast.POSITION.TOP_CENTER,
             });
           });
-        setChange(!change);
+        fetchUser();
         return;
       }
     } else if (
@@ -139,7 +145,10 @@ const ChangePassword = () => {
         values.repeatPassword === "" &&
         values.name === loggedIn.name)
     ) {
-      alert("Repeat password field must be filled");
+      toast.error("Repeat password field must be filled", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      // alert("Repeat password field must be filled");
       return;
     } else if (
       (values.password === "" &&
@@ -149,7 +158,10 @@ const ChangePassword = () => {
         values.repeatPassword !== "" &&
         values.name === loggedIn.name)
     ) {
-      alert("Password field must be filled");
+      toast.error("Password field must be filled", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      // alert("Password field must be filled");
       return;
     }
   };
@@ -167,141 +179,139 @@ const ChangePassword = () => {
   }, [values]);
 
   return (
-    <Container className={classes.grid}>
-      <form autoComplete="off" noValidate className={classes.form}>
-        <Grid container justifyContent="center" spacing={3}>
-          <Paper className={classes.paper} elevation={3}>
-            <Avatar className={classes.profilepic} src={man}></Avatar>
-            <Typography className={classes.logintext}>
-              {loggedIn ? loggedIn.email : ""}
-            </Typography>
-            <Grid container spacing={2} className={classes.name}>
-              <Grid item xs={3}>
-                <Typography className={classes.logintext}>Name</Typography>
+    <>
+      <Navbar />
+      <Container className={classes.grid}>
+        <form autoComplete="off" noValidate className={classes.form}>
+          <Grid container justifyContent="center" spacing={3}>
+            <Paper className={classes.paper} elevation={3}>
+              <Avatar className={classes.profilepic} src={man}></Avatar>
+              <Typography className={classes.logintext}>
+                {loggedIn ? loggedIn.email : ""}
+              </Typography>
+              <Grid container spacing={2} className={classes.name}>
+                <Grid item xs={3}>
+                  <Typography className={classes.logintext}>Name</Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <TextField
+                    className={classes.LastName}
+                    id="outlined-basic"
+                    label="Name"
+                    variant="outlined"
+                    value={values ? values.name : ""}
+                    onChange={handleChange("name")}
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={9}>
-                <TextField
-                  className={classes.LastName}
-                  id="outlined-basic"
-                  label="Name"
-                  variant="outlined"
-                  value={values ? values.name : ""}
-                  onChange={handleChange("name")}
-                />
-              </Grid>
-            </Grid>
 
-            <Grid container spacing={2} className={classes.password}>
-              <Grid item xs={3}>
-                <Typography className={classes.logintext}>Password</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                {/* <TextField
-                  id="outlined-basic"
-                  label="Old Password"
-                  variant="outlined"
-                  value={values.oldPassword}
-                  onChange={() => handleChange("oldPassword")}
-                /> */}
-                <FormControl
-                  className={clsx(classes.margin, classes.textField)}
-                  variant="outlined"
-                >
-                  <InputLabel htmlFor="outlined-adornment-password">
+              <Grid container spacing={2} className={classes.password}>
+                <Grid item xs={3}>
+                  <Typography className={classes.logintext}>
                     Password
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={values.showPassword ? "text" : "password"}
-                    value={values.password}
-                    onChange={handleChange("password")}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {values.showPassword ? (
-                            <Visibility />
-                          ) : (
-                            <VisibilityOff />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    labelWidth={70}
-                  />
-                </FormControl>
+                  </Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <FormControl
+                    className={clsx(classes.margin, classes.textField)}
+                    variant="outlined"
+                  >
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      Password
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={values.showPassword ? "text" : "password"}
+                      value={values.password}
+                      onChange={handleChange("password")}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {values.showPassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      labelWidth={70}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={4}>
+                  <FormControl
+                    className={clsx(classes.margin, classes.textField)}
+                    variant="outlined"
+                  >
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      Repeat Password
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={values.showRepeatePassword ? "text" : "password"}
+                      value={values.repeatPassword}
+                      onChange={handleChange("repeatPassword")}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowRepeatePassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {values.showRepeatePassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      labelWidth={70}
+                    />
+                  </FormControl>
+                </Grid>
               </Grid>
-              <Grid item xs={4}>
-                <FormControl
-                  className={clsx(classes.margin, classes.textField)}
-                  variant="outlined"
-                >
-                  <InputLabel htmlFor="outlined-adornment-password">
-                    Repeat Password
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={values.showRepeatePassword ? "text" : "password"}
-                    value={values.repeatPassword}
-                    onChange={handleChange("repeatPassword")}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowRepeatePassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {values.showRepeatePassword ? (
-                            <Visibility />
-                          ) : (
-                            <VisibilityOff />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    labelWidth={70}
-                  />
-                </FormControl>
-              </Grid>
-            </Grid>
 
-            <Grid container spacing={2} className={classes.actionbutton}>
-              <Grid item xs={4}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  className={classes.signbutton}
-                  disabled={disable}
-                  onClick={changeUserValues}
-                >
-                  Save
-                </Button>
+              <Grid container spacing={2} className={classes.actionbutton}>
+                <Grid item xs={4}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    className={classes.signbutton}
+                    disabled={disable}
+                    onClick={changeUserValues}
+                  >
+                    Save
+                  </Button>
+                </Grid>
+                <Grid item xs={4}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    className={classes.signbutton}
+                    onClick={() => {
+                      history.push("/");
+                      setDisable(!disable);
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={4}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  size="large"
-                  className={classes.signbutton}
-                  onClick={() => {
-                    history.push("/");
-                    setDisable(!disable);
-                  }}
-                >
-                  Cancel
-                </Button>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-      </form>
-    </Container>
+            </Paper>
+          </Grid>
+        </form>
+      </Container>
+    </>
   );
 };
 

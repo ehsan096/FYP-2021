@@ -62,9 +62,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
-  profilemenu: {
-    marginTop: "-370px",
-    marginLeft: "1060px",
+  profilemenu12: {
+    position: "absolute",
+    marginTop: "-415px",
+    marginLeft: "1090px",
   },
   profilemenulink: {
     textDecoration: "none",
@@ -200,28 +201,15 @@ const Navbar = () => {
                       </Grid>
                     </>
                   ) : (
-                    // <Grid item>
-                    //   <Button
-                    //     className={classes.loginbutton}
-                    //     variant="contained"
-                    //     onClick={() => {
-                    //       UserService.logout();
-                    //       setLogin(!login);
-                    //     }}
-                    //   >
-                    //     Logout{" "}
-                    //   </Button>
-                    // </Grid>
                     <Grid item>
-                      <div className={classes.avatar}>
-                        <Avatar
-                          alt="Remy Sharp"
-                          src={man}
-                          aria-controls="basic-menu"
-                          aria-haspopup="true"
-                          aria-expanded={open ? "true" : undefined}
-                          onClick={handleClick}
-                        />
+                      <div
+                        className={classes.avatar}
+                        aria-controls="basic-menu"
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClick}
+                      >
+                        <Avatar alt="Remy Sharp" src={man} />
                         <div style={{ color: "black" }}>
                           {UserService.getLoggedInUser().name}
                         </div>
@@ -231,7 +219,7 @@ const Navbar = () => {
                         UserService.getLoggedInUser().name
                       )}
                       <Menu
-                        className={classes.profilemenu}
+                        className={classes.profilemenu12}
                         id="basic-menu"
                         anchorEl={profile}
                         open={open}

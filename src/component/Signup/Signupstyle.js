@@ -14,6 +14,7 @@ export const useStyle = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: theme.spacing(5),
+    width: "25rem",
     // marginBottom: "2rem",
   },
   logintext: {

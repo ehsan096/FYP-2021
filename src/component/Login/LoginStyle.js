@@ -13,6 +13,7 @@ export const useStyle = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: theme.spacing(8),
+    width: "22rem",
   },
   logintext: {
     marginTop: "1rem",
@@ -30,10 +31,11 @@ export const useStyle = makeStyles((theme) => ({
 
   input: {
     margin: "10px 0",
-    width: "130%",
+    width: "100%",
   },
   loginbutton: {
-    width: "130%",
+    marginTop: "1rem",
+    width: "100%",
   },
   forgotpassword: {
     marginTop: "1rem",
@@ -42,7 +44,7 @@ export const useStyle = makeStyles((theme) => ({
     fontWeight: "600",
   },
   textField: {
-    width: "130%",
+    width: "100%",
   },
   margin: {
     margin: theme.spacing(1),
