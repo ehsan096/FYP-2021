@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { useStyle } from "./RightsidebarStyle";
+import logoService from "../../../services/Logos";
 
 import { Link } from "react-router-dom";
 // import { Logoos } from "../../LogoSubCategory/DumyData";
@@ -17,11 +18,11 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
   const [Logoos, setLogoos] = React.useState([]);
   // console.log("Logoos > ", Logoos);
   const getLogos = () => {
-    axios
-      .get("http://localhost:4000/api/logos")
-      .then((res) => {
-        setLogoos(res.data);
-        console.log("Response Logos>> ", res.data);
+    logoService
+      .getLogos()
+      .then((data) => {
+        setLogoos(data);
+        console.log("Response Logos>> ", data);
       })
       .catch((err) => {
         console.log("Error ", err);
@@ -50,7 +51,7 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                     >
                       <Card
                         onClick={() => {
-                          setLogo(logoo.logoJson);
+                          setLogo(logoo);
                         }}
                       >
                         <CardActionArea>
@@ -76,9 +77,7 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                   >
                     <Card
                       onClick={() => {
-                        logoo.logoJson
-                          ? setLogo(logoo.logoJson)
-                          : setLogo(logoo.logoSvg);
+                        setLogo(logoo);
                       }}
                     >
                       <CardActionArea>
@@ -106,9 +105,7 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
                 >
                   <Card
                     onClick={() => {
-                      logoo.logoJson
-                        ? setLogo(logoo.logoJson)
-                        : setLogo(logoo.logoSvg);
+                      setLogo(logoo);
                     }}
                   >
                     <CardActionArea>
@@ -134,9 +131,7 @@ const Rightsidebar = ({ setLogo, catName, search }) => {
               >
                 <Card
                   onClick={() => {
-                    logoo.logoJson
-                      ? setLogo(logoo.logoJson)
-                      : setLogo(logoo.logoSvg);
+                    setLogo(logoo);
                   }}
                 >
                   <CardActionArea>

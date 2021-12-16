@@ -34,7 +34,7 @@ const Canvas = ({
   setBackgroundColor,
   backgroundColor,
   storedLogo,
-  setPreview,
+  preview,
 }) => {
   const classes = useStyle();
   const [canvas, setCanvas] = useState(false);
@@ -60,6 +60,19 @@ const Canvas = ({
       setHistorypush(!historypuch);
     }
   }, [storedLogo]);
+
+  const storedLogoSet = () => {
+    if (storedLogo) {
+      preview.current = {
+        _id: storedLogo._id,
+        logotype: storedLogo.logotype,
+        name: storedLogo.name,
+        category: storedLogo.category,
+        logoSvg: canvas.toSVG(),
+        logoJson: canvas.toJSON(),
+      };
+    }
+  };
 
   const initialize = (str) => {
     var canvas = new fabric.Canvas("a", {
@@ -181,14 +194,27 @@ const Canvas = ({
     setOriginalCanvas(canvas.historyUndo.length);
     console.log("Canvas obj > ", canvas);
     setCanvas(canvas);
-    setPreview(canvas.toSVG());
+    if (storedLogo) {
+      preview.current = {
+        _id: storedLogo._id,
+        logotype: storedLogo.logotype,
+        name: storedLogo.name,
+        category: storedLogo.category,
+        logoSvg: canvas.toSVG(),
+        logoJson: canvas.toJSON(),
+      };
+    }
   };
   //initialize SVG string into Canvas
   useEffect(() => {
-    if (storedLogo) {
-      console.log("storedLogo in Body", storedLogo);
-
-      storedLogo.logoJson
+    console.log("StoredLogo 210", storedLogo);
+    if (storedLogo && storedLogo._id) {
+      console.log("storedLogo in Body", typeof storedLogo.logoJson);
+      typeof storedLogo.logoJson !== "string"
+        ? storedLogo.logoJson
+          ? initialize(JSON.stringify(storedLogo.logoJson))
+          : initialize(JSON.stringify(storedLogo.logoSvg))
+        : storedLogo.logoJson
         ? initialize(storedLogo.logoJson)
         : initialize(storedLogo.logoSvg);
     }
@@ -259,6 +285,7 @@ const Canvas = ({
     if (textId && canvas && canvas.getActiveObject()) {
       let selectedObj = canvas.getActiveObject();
       let type = selectedObj.type;
+      console.log("Type of object > ", type);
       if (
         canvas.getActiveObject().type === "text" ||
         canvas.getActiveObject().type === "i-text"
@@ -366,8 +393,7 @@ const Canvas = ({
       textProp &&
       svgText !== textProp.current &&
       canvas.getActiveObject() &&
-      canvas.getActiveObject().type === "i-text" &&
-      canvas.getActiveObject().get("id") === textId
+      canvas.getActiveObject().type === "i-text"
     ) {
       let shadow = new fabric.Shadow({
         color: svgText.shadowColor,
@@ -377,7 +403,7 @@ const Canvas = ({
       });
 
       let selectedObj = canvas.getActiveObject();
-      console.log("FontFamily Comparison > line 381> ", selectedObj.get("id"));
+      console.log("FontFamily Comparison > line 381> ", svgText.FontFamily);
 
       selectedObj.set("fontFamily", svgText.FontFamily);
       selectedObj.set("fontSize", svgText.fontSize);
@@ -406,8 +432,7 @@ const Canvas = ({
       textProp &&
       svgText !== textProp.current &&
       canvas.getActiveObject() &&
-      canvas.getActiveObject().type !== "i-text" &&
-      canvas.getActiveObject().get("id") === textId
+      canvas.getActiveObject().type !== "i-text"
     ) {
       let shadow = new fabric.Shadow({
         color: svgText.shadowColor,
@@ -438,7 +463,7 @@ const Canvas = ({
       canvas.getActiveObject()
     );
     console.log(" Undo&redo here in Selection");
-    if (e.target.get("id") !== textId) {
+    if (e.target !== textId) {
       console.log(
         "Hiddent renderrr condition",
         e.target.get("id") !== textId,
@@ -449,20 +474,16 @@ const Canvas = ({
       );
       // setHidden(false);
       console.log("settextId render");
-      if (!e.target.get("id")) {
-        e.target.set("id", count);
-        setCount(count + 1);
+      // if (!e.target.get("id")) {
+      //   e.target.set("id", count);
+      //   setCount(count + 1);
+      // }
 
-        setPreview(canvas.toSVG());
-      }
-
-      settextId(e.target.get("id"));
+      // storedLogoSet();
+      settextId(e.target);
+      console.log("Hiddent renderrr condition 2 ");
     }
   }
-  useEffect(() => {
-    console.log("abcdefgh");
-  }, [canvas]);
-
   function handleCleared() {
     console.log("handleCleared render");
 
@@ -478,7 +499,9 @@ const Canvas = ({
         "selection:created": handleSelection,
         "selection:cleared": handleCleared,
       });
-      canvas.on("object:modified", () => setPreview(canvas.toSVG()));
+      canvas.on("object:modified", () => {
+        storedLogoSet();
+      });
       // return () => {
       //   console.log("canvas off render");
       //   canvas.off(["selection:updated", "selection:created"]);
@@ -817,13 +840,13 @@ const Canvas = ({
   const funUndo = () => {
     if (originalCanvas < canvas.historyUndo.length) {
       canvas.undo();
-      setPreview(canvas.toSVG());
+      storedLogoSet();
     }
   };
   const funRedo = () => {
     if (canvas.historyRedo.length > 0) {
       canvas.redo();
-      setPreview(canvas.toSVG());
+      storedLogoSet();
     }
   };
   const handleBlurWidth = () => {

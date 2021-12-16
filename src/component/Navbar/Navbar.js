@@ -8,8 +8,12 @@ import {
   Toolbar,
   useTheme,
   Grid,
+  Menu,
+  MenuItem,
+  Avatar,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import man from "../../images/man.jpeg";
 
 import DrawerComponent from "./DrawerComponent/DrawerComponent";
 import { FcStumbleupon } from "react-icons/fc";
@@ -42,13 +46,29 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #2ac5b3",
     fontSize: "15px",
     fontWeight: "bold",
-    marginTop: "0.5rem",
+    marginTop: "0.8rem",
     color: "#2ac5b3",
     "&:hover": {
       background: "#2ac5b3",
       color: "white",
       fontSize: "15px",
     },
+  },
+  avatar: {
+    marginTop: "0.5rem",
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  profilemenu: {
+    marginTop: "-370px",
+    marginLeft: "1060px",
+  },
+  profilemenulink: {
+    textDecoration: "none",
+    color: "black",
   },
   loginlink: {
     textDecoration: "none",
@@ -87,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
   appbar: {
     backgroundColor: "white",
     boxShadow: "0 4px 4px rgb(64 87 109 / 7%)",
-    marginBottom: "10px",
+    // marginBottom: "10px",
   },
 
   tabsContainer: {
@@ -107,6 +127,15 @@ const Navbar = () => {
   //Boolean(anchorEl) This is use to convert a null value in to a boolean
   //anchorEl Is us to set the position of the menu
 
+  const [profile, setProfile] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(false);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const classes = useStyles();
 
   const theme = useTheme(); //Get a copy of our default theme in our component so that we can access the breakpoints and pass the useMediaQuery
@@ -171,17 +200,73 @@ const Navbar = () => {
                       </Grid>
                     </>
                   ) : (
+                    // <Grid item>
+                    //   <Button
+                    //     className={classes.loginbutton}
+                    //     variant="contained"
+                    //     onClick={() => {
+                    //       UserService.logout();
+                    //       setLogin(!login);
+                    //     }}
+                    //   >
+                    //     Logout{" "}
+                    //   </Button>
+                    // </Grid>
                     <Grid item>
-                      <Button
-                        className={classes.loginbutton}
-                        variant="contained"
-                        onClick={() => {
-                          UserService.logout();
-                          setLogin(!login);
+                      <div className={classes.avatar}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src={man}
+                          aria-controls="basic-menu"
+                          aria-haspopup="true"
+                          aria-expanded={open ? "true" : undefined}
+                          onClick={handleClick}
+                        />
+                        <div style={{ color: "black" }}>
+                          {UserService.getLoggedInUser().name}
+                        </div>
+                      </div>
+                      {console.log(
+                        "UserService.getLoggedInUser() ",
+                        UserService.getLoggedInUser().name
+                      )}
+                      <Menu
+                        className={classes.profilemenu}
+                        id="basic-menu"
+                        anchorEl={profile}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
                         }}
                       >
-                        Logout{" "}
-                      </Button>
+                        <MenuItem onClick={handleClose}>
+                          <Link
+                            to="/savelogo"
+                            className={classes.profilemenulink}
+                          >
+                            My Logos
+                          </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          {" "}
+                          <Link
+                            to="/changepassword"
+                            className={classes.profilemenulink}
+                          >
+                            Profile
+                          </Link>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => {
+                            handleClose();
+                            UserService.logout();
+                            setLogin(!login);
+                          }}
+                        >
+                          Logout
+                        </MenuItem>
+                      </Menu>
                     </Grid>
                   )}
                 </Grid>

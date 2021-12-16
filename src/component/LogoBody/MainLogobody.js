@@ -11,7 +11,8 @@ const MainLogobody = ({ storedLogo }) => {
   const classes = useStyle();
 
   const [svgLogo, setSvgLogo] = React.useState(null);
-  const [preview, setPreview] = React.useState(null);
+  // const [preview, setPreview] = React.useState(null);
+  const preview = React.useRef(null);
   const [content, setContent] = React.useState("icon");
   const [text, setText] = React.useState("");
   const [iconType, setIconType] = React.useState(null);
@@ -89,7 +90,7 @@ const MainLogobody = ({ storedLogo }) => {
             setBackgroundColor={setBackgroundColor}
             backgroundColor={backgroundColor}
             storedLogo={storedLogo}
-            setPreview={setPreview}
+            preview={preview}
           />
         </Grid>
         <Grid item xs={3} sm={4} md={4} lg={3} className={classes.rightsidebar}>

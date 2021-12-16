@@ -43,6 +43,7 @@ const Login = () => {
       await userService.login(email, values.password);
       setLogin(true);
       history.goBack();
+      console.log("Check Equality > ", history.goBack() === "/signup");
     } catch (e) {
       // alert(e.message);
       toast.error(e.response.data, {

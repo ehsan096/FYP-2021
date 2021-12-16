@@ -38,7 +38,7 @@ export const useStyles = makeStyles((theme) => ({
     border: "2px solid white",
     fontSize: "12px",
     fontWeight: "bold",
-    marginTop: "0.3rem",
+    marginTop: "1rem",
     color: "white",
     "&:hover": {
       background: "#2ac5b3",
@@ -49,7 +49,7 @@ export const useStyles = makeStyles((theme) => ({
   undologo: {
     fontSize: "12px",
     fontWeight: "bold",
-    marginTop: "0.5rem",
+    marginTop: "1rem",
     color: "white",
     border: "none",
     "&:hover": {
@@ -61,7 +61,7 @@ export const useStyles = makeStyles((theme) => ({
   previewlogo: {
     fontSize: "12px",
     fontWeight: "bold",
-    marginTop: "0.5rem",
+    marginTop: "1rem",
     color: "white",
     border: "none",
     "&:hover": {
@@ -73,7 +73,7 @@ export const useStyles = makeStyles((theme) => ({
   savelogo: {
     fontSize: "12px",
     fontWeight: "bold",
-    marginTop: "0.5rem",
+    marginTop: "1rem",
     color: "white",
     border: "none",
     "&:hover": {
@@ -89,12 +89,16 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "12px",
     backgroundColor: "#2ac5b3",
     color: "white",
-    marginTop: "0.4rem",
+    marginTop: "1rem",
     fontWeight: "600",
 
     "&:hover": {
       background: "#2ac5b3",
     },
+  },
+  Username: {
+    fontSize: "18px",
+    fontWeight: "600",
   },
   signuplink: {
     textDecoration: "none",
@@ -104,7 +108,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "#2ac5b3",
     color: "white",
     fontWeight: "600",
-    marginTop: "0.5rem",
+    marginTop: "0.8rem",
     backgroundColor: "#2ac5b3",
     "&:hover": {
       background: "#2ac5b3",
@@ -170,5 +174,25 @@ export const useStyles = makeStyles((theme) => ({
     left: 540,
     top: 104,
     width: "4%",
+  },
+  avatar: {
+    marginTop: "0.5rem",
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+
+    alignItems: "center",
+
+    // flexDirection: "column",
+    // justifyContent: "center",
+  },
+  profilemenu: {
+    marginTop: "-240px",
+    marginLeft: "1120px",
+  },
+  profilemenulink: {
+    textDecoration: "none",
+    color: "black",
   },
 }));
