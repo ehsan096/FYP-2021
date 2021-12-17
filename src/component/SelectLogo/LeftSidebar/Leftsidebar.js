@@ -9,7 +9,8 @@ import {
 import { Link } from "react-router-dom";
 import { useStyle } from "./Leftsidebarstyle";
 import DrawerComponent from "./DrawerComponent";
-import axios from "axios";
+
+import categoryService from "../../../services/Categories";
 
 const Leftsidebar = ({ setCatName, setSearch, search }) => {
   // const [value, setValue] = useState(0);
@@ -21,14 +22,14 @@ const Leftsidebar = ({ setCatName, setSearch, search }) => {
   const [categories, setCategories] = React.useState([]);
 
   const getCategories = () => {
-    axios
-      .get("http://localhost:4000/api/categories")
-      .then((res) => {
-        setCategories(res.data.categories);
-        console.log("Response  in leftbar>> ", res.data.categories);
+    categoryService
+      .getCategories()
+      .then((data) => {
+        console.log("Get main Logo Data > ", data);
+        setCategories(data.categories);
       })
       .catch((err) => {
-        console.log("Error ", err);
+        console.log("Error in Main Logo", err);
       });
   };
   React.useEffect(() => {

@@ -11,15 +11,6 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 import { useStyle } from "./Style";
-import eduction from "../../images/education.png";
-import beauty from "../../images/beauty.png";
-import animal from "../../images/animal.png";
-import food from "../../images/food.png";
-import business from "../../images/business.png";
-import sport from "../../images/sport.png";
-import letter from "../../images/letter.png";
-import medical from "../../images/medical.png";
-import axios from "axios";
 import categoryService from "../../services/Categories";
 
 const Logocategory = () => {
@@ -90,7 +81,7 @@ const Logocategory = () => {
                 return (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={category.name}>
                     <Link
-                      to={`/selectlogo/${category.logoName}`}
+                      to={`/selectlogo/${category.name}`}
                       className={classes.cardlink}
                     >
                       <Card className={classes.grid}>
