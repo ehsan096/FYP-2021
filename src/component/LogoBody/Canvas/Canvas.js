@@ -1,12 +1,4 @@
-import {
-  Grid,
-  Paper,
-  Typography,
-  Dialog,
-  TextField,
-  Box,
-  Button,
-} from "@material-ui/core";
+import { Grid, Paper } from "@material-ui/core";
 import { useStyle } from "./CanvasStyle";
 import React, { useEffect, useState, useRef } from "react";
 import Input from "@material-ui/core/Input";
@@ -16,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { saveAs } from "file-saver";
 import { fabric } from "fabric";
 import "fabric-history";
+import userService from "../../../services/UserService";
 
 const Canvas = ({
   svgLogo,
@@ -34,7 +27,9 @@ const Canvas = ({
   setBackgroundColor,
   backgroundColor,
   storedLogo,
+  setLogo,
   preview,
+  loginCheck,
 }) => {
   const classes = useStyle();
   const [canvas, setCanvas] = useState(false);
@@ -56,10 +51,20 @@ const Canvas = ({
   // str = JSON.stringify(str);
   useEffect(() => {
     if (!storedLogo) {
-      history.goBack();
+      history.push("/");
       setHistorypush(!historypuch);
     }
   }, [storedLogo]);
+
+  useEffect(() => {
+    if (
+      !userService.isLoggedIn() &&
+      storedLogo &&
+      storedLogo.logotype === "user"
+    ) {
+      setLogo(null);
+    }
+  }, [loginCheck]);
 
   const storedLogoSet = () => {
     if (storedLogo) {

@@ -1,10 +1,10 @@
 import React from "react";
 import MainLogobody from "../component/LogoBody/MainLogobody";
 
-const LogoBodypage = ({ storedLogo }) => {
+const LogoBodypage = ({ storedLogo, setLogo }) => {
   return (
     <div>
-      <MainLogobody storedLogo={storedLogo} />
+      <MainLogobody storedLogo={storedLogo} setLogo={setLogo} />
     </div>
   );
 };

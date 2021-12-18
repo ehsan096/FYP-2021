@@ -7,7 +7,7 @@ import MiddleSidebar from "./Middlesidebar/MiddleSidebar";
 import RightSidebar from "./RightSidebar/RightSidebar";
 import Header from "./BodyHeader/Header";
 
-const MainLogobody = ({ storedLogo }) => {
+const MainLogobody = ({ storedLogo, setLogo }) => {
   const classes = useStyle();
 
   const [svgLogo, setSvgLogo] = React.useState(null);
@@ -19,6 +19,7 @@ const MainLogobody = ({ storedLogo }) => {
   const [undoRedo, setUndoRedo] = React.useState(null);
   const [download, setDownload] = React.useState(null);
   const [layer, setLayer] = React.useState(null);
+  const [loginCheck, setLoginCheck] = React.useState();
   const [objectSelection, setObjectSelection] = React.useState(false);
   const [backgroundColor, setBackgroundColor] = React.useState(null);
 
@@ -50,6 +51,8 @@ const MainLogobody = ({ storedLogo }) => {
         setUndoRedo={setUndoRedo}
         setDownload={setDownload}
         preview={preview}
+        setLoginCheck={setLoginCheck}
+        loginCheck={loginCheck}
       />
       <Grid container className={classes.grid}>
         <Grid item xs={1} sm={1} md={1} className={classes.leftsidebar}>
@@ -90,7 +93,9 @@ const MainLogobody = ({ storedLogo }) => {
             setBackgroundColor={setBackgroundColor}
             backgroundColor={backgroundColor}
             storedLogo={storedLogo}
+            setLogo={setLogo}
             preview={preview}
+            loginCheck={loginCheck}
           />
         </Grid>
         <Grid item xs={3} sm={4} md={4} lg={3} className={classes.rightsidebar}>

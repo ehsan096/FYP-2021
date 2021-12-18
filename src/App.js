@@ -51,7 +51,7 @@ function App() {
       </Route>
 
       <Route exact path="/selectlogo/:variable/:logoid">
-        <LogoBodypage storedLogo={storedLogo} />
+        <LogoBodypage storedLogo={storedLogo} setLogo={setLogo} />
       </Route>
       <Route exact path="/selectlogo">
         <SelectlogoPage storedLogo={storedLogo} setLogo={setLogo} />

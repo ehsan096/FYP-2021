@@ -34,11 +34,15 @@ import UserService from "../../../services/UserService";
 import userService from "../../../services/UserService";
 import DrawerComponent from "./DrawerComponent";
 
-const Header = ({ setUndoRedo, setDownload, preview }) => {
-  const [profile, setProfile] = React.useState(null);
+const Header = ({
+  setUndoRedo,
+  setDownload,
+  preview,
+  loginCheck,
+  setLoginCheck,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(false);
   const [login, setLogin] = React.useState(false);
-  const openAnchor = Boolean(anchorEl);
   const handleClickAnchor = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -53,6 +57,10 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
   const handleClose = () => {
     setDownloadmenu(null);
   };
+
+  useEffect(() => {
+    userService.isLoggedIn() ? setLoginCheck(true) : setLoginCheck(false);
+  });
 
   const setUserLogo = async (logo) => {
     let loggedInUser = await userService.getLoggedInUser();
