@@ -50,9 +50,9 @@ export const useStyles = makeStyles((theme) => ({
   mylogo: {
     fontSize: "12px",
     fontWeight: "bold",
-    marginTop: "0.5rem",
+    marginTop: "1.5rem",
     color: "white",
-    border: "none",
+    border: "1px solid #2ac5b3",
     "&:hover": {
       background: "#2ac5b3",
       color: "white",
@@ -75,6 +75,22 @@ export const useStyles = makeStyles((theme) => ({
       color: "white",
       fontSize: "12px",
     },
+  },
+  avatar: {
+    marginTop: "0.5rem",
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  profilemenu12: {
+    marginTop: "53px",
+    marginLeft: "14px",
+  },
+  profilemenulink: {
+    textDecoration: "none",
+    color: "black",
   },
   signuplink: {
     textDecoration: "none",

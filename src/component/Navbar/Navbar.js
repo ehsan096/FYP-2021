@@ -63,9 +63,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   profilemenu12: {
-    position: "absolute",
-    marginTop: "-415px",
-    marginLeft: "1090px",
+    marginTop: "53px",
+    marginLeft: "14px",
   },
   profilemenulink: {
     textDecoration: "none",
@@ -128,9 +127,9 @@ const Navbar = () => {
   //Boolean(anchorEl) This is use to convert a null value in to a boolean
   //anchorEl Is us to set the position of the menu
 
-  const [profile, setProfile] = React.useState(null);
+  // const [profile, setProfile] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(false);
-  const open = Boolean(anchorEl);
+  // const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -170,11 +169,6 @@ const Navbar = () => {
                   </Button>
                 </Link>
               </Grid>
-              {/* <Grid item className={classes.category}>
-                <Link to="" className={classes.categorylink}>
-                  Categories
-                </Link>
-              </Grid> */}
               <Grid item>
                 <Grid container spacing={3}>
                   {!UserService.isLoggedIn() ? (
@@ -204,9 +198,9 @@ const Navbar = () => {
                     <Grid item>
                       <div
                         className={classes.avatar}
-                        aria-controls="basic-menu"
+                        // aria-expanded={open ? "true" : undefined}
+                        aria-controls="simple-menu"
                         aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
                         onClick={handleClick}
                       >
                         <Avatar alt="Remy Sharp" src={man} />
@@ -214,19 +208,22 @@ const Navbar = () => {
                           {UserService.getLoggedInUser().name}
                         </div>
                       </div>
-                      {console.log(
-                        "UserService.getLoggedInUser() ",
-                        UserService.getLoggedInUser().name
-                      )}
+
                       <Menu
+                        // className={classes.profilemenu12}
+                        // id="basic-menu"
+                        // anchorEl={profile}
+                        // open={open}
+                        // onClose={handleClose}
+                        // MenuListProps={{
+                        //   "aria-labelledby": "basic-button",
+                        // }}
                         className={classes.profilemenu12}
-                        id="basic-menu"
-                        anchorEl={profile}
-                        open={open}
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
                         onClose={handleClose}
-                        MenuListProps={{
-                          "aria-labelledby": "basic-button",
-                        }}
                       >
                         <MenuItem onClick={handleClose}>
                           <Link

@@ -384,7 +384,6 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
                         className={classes.avatar}
                         aria-controls="basic-menu"
                         aria-haspopup="true"
-                        aria-expanded={openAnchor ? "true" : undefined}
                         onClick={handleClickAnchor}
                       >
                         <Avatar alt="Remy Sharp" src={man} />
@@ -398,13 +397,12 @@ const Header = ({ setUndoRedo, setDownload, preview }) => {
                       )}
                       <Menu
                         className={classes.profilemenu}
+                        className={classes.profilemenu}
                         id="basic-menu"
-                        anchorEl={profile}
-                        open={openAnchor}
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
                         onClose={handleCloseAnchor}
-                        MenuListProps={{
-                          "aria-labelledby": "basic-button",
-                        }}
                       >
                         <MenuItem onClick={handleCloseAnchor}>
                           <Link

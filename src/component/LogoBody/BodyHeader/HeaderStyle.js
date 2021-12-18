@@ -181,15 +181,11 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-
     alignItems: "center",
-
-    // flexDirection: "column",
-    // justifyContent: "center",
   },
   profilemenu: {
-    marginTop: "-240px",
-    marginLeft: "1120px",
+    marginTop: "53px",
+    marginLeft: "14px",
   },
   profilemenulink: {
     textDecoration: "none",
