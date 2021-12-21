@@ -16,6 +16,10 @@ export const useStyle = makeStyles((theme) => ({
   logotext: {
     textDecoration: "none",
   },
+  CategoryName: {
+    display: "flex",
+    justifyContent: "space-evenly",
+  },
   grid: {
     // transition: "transform .5s, box-shadow 1s",
     // "&:hover": {

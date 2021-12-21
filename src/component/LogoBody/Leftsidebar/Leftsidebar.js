@@ -53,7 +53,7 @@ const Leftsidebar = ({ setContent, setIconType }) => {
         <Tabs>
           <Tab
             className={classes.backgroundtext}
-            label="BKGROUND"
+            label="BACKGROUND"
             icon={<TextureIcon className={classes.iconname} />}
             onClick={() => {
               setContent("background");

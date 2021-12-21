@@ -73,6 +73,7 @@ const MainLogobody = ({ storedLogo, setLogo }) => {
             iconType={iconType}
             setIconType={setIconType}
             setBackgroundColor={setBackgroundColor}
+            backgroundColor={backgroundColor}
           />
         </Grid>
         <Grid item xs={6} sm={5} md={5} lg={5} className={classes.canvas}>

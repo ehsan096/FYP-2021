@@ -15,7 +15,6 @@ import categoryService from "../../services/Categories";
 
 const Logocategory = () => {
   const classes = useStyle();
-  let variable = "";
   const [categories, setCategories] = React.useState([]);
   const getCategories = () => {
     categoryService
@@ -77,7 +76,6 @@ const Logocategory = () => {
           {categories.length > 1
             ? categories.map((category) => {
                 console.log("categories.map > ", category);
-                variable = category.logoName;
                 return (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={category.name}>
                     <Link
@@ -93,9 +91,17 @@ const Logocategory = () => {
                             className={classes.media}
                           />
                           <Divider />
-                          <CardContent>
-                            <Typography varient="h6" component="h2">
-                              {category.logoName} Logo
+                          <CardContent
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-evenly",
+                            }}
+                          >
+                            <Typography
+                              varient="h3"
+                              style={{ fontWeight: "600", color: "#2AC5B3" }}
+                            >
+                              {category.name} Logo
                             </Typography>
                           </CardContent>
                         </CardActionArea>
