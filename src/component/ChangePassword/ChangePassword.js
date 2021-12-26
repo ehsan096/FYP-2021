@@ -37,7 +37,6 @@ const ChangePassword = () => {
   });
   const [loggedIn, setLoggedIn] = React.useState(null);
   const [disable, setDisable] = React.useState(true);
-  const [change, setChange] = React.useState(true);
 
   const fetchUser = async () => {
     let user = await userService.getSingleUser(
@@ -168,15 +167,17 @@ const ChangePassword = () => {
 
   React.useEffect(() => {
     if (
-      (values.name && values.name !== loggedIn.name) ||
+      (values.name && values.name !== (loggedIn ? loggedIn.name : null)) ||
       (values.password && values.password !== "") ||
       (values.repeatPassword && values.repeatPassword !== "")
     ) {
+      console.log("False");
       setDisable(false);
     } else {
+      console.log("true");
       setDisable(true);
     }
-  }, [values]);
+  }, [values.name, values.password, values.repeatPassword]);
 
   return (
     <>

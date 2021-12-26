@@ -31,41 +31,6 @@ const Logocategory = () => {
     getCategories();
   }, []);
 
-  // let categories = [
-  //   {
-  //     name: "Education",
-  //     image: eduction,
-  //   },
-  //   {
-  //     name: "Fashion",
-  //     image: beauty,
-  //   },
-  //   {
-  //     name: "Animal",
-  //     image: animal,
-  //   },
-  //   {
-  //     name: "Food",
-  //     image: food,
-  //   },
-  //   {
-  //     name: "Business",
-  //     image: business,
-  //   },
-  //   {
-  //     name: "Sports",
-  //     image: sport,
-  //   },
-  //   {
-  //     name: "Medical",
-  //     image: medical,
-  //   },
-  //   {
-  //     name: "Letter",
-  //     image: letter,
-  //   },
-  // ];
-
   return (
     <div>
       <Container className={classes.Gridcontainer}>

@@ -12,6 +12,7 @@ import {
   Box,
   Avatar,
 } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import shirtlogo from "../../../images/shirtlogo.png";
 import laptoplogo from "../../../images/laptop.png";
 import PropTypes from "prop-types";
@@ -24,7 +25,7 @@ import { GoCloudUpload } from "react-icons/go";
 import { IoIosArrowBack } from "react-icons/io";
 import { FiDownload } from "react-icons/fi";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import man from "../../../images/man.jpeg";
@@ -49,6 +50,7 @@ const Header = ({
   const handleCloseAnchor = () => {
     setAnchorEl(null);
   };
+  const history = useHistory();
   const [downloadmenu, setDownloadmenu] = React.useState(null);
   const open = Boolean(downloadmenu);
   const handleClick = (event) => {
@@ -64,43 +66,15 @@ const Header = ({
 
   const setUserLogo = async (logo) => {
     let loggedInUser = await userService.getLoggedInUser();
-    let user = await userService.getSingleUser(loggedInUser._id);
-    if (user) {
-      console.log("user in server response > ", user);
-      if (user.logos.length === 0) {
-        console.log("user logo length ===0  ");
+    if (loggedInUser) {
+      let user = await userService.getSingleUser(loggedInUser._id);
+      if (user) {
+        console.log("user in server response > ", user);
+        if (user.logos.length === 0) {
+          console.log("user logo length ===0  ");
 
-        await userService
-          .updateUserLogo(loggedInUser._id, preview.current)
-          .then((res) => {
-            toast.success(res, {
-              position: toast.POSITION.TOP_CENTER,
-            });
-          })
-          .catch((err) => {
-            toast.err(err.response.data, {
-              position: toast.POSITION.TOP_CENTER,
-            });
-          });
-      } else {
-        console.log("user length >1 ", user);
-
-        let i = user.logos.findIndex(checkLogo);
-        function checkLogo(logo) {
-          return logo._id === preview.current._id;
-        }
-        let data = {
-          _id: logo._id,
-          name: logo.name,
-          category: logo.category,
-          logotype: "user",
-          logoSvg: logo.logoSvg,
-          logoJson: logo.logoJson,
-        };
-        if (i === -1) {
-          console.log("user logo could not find index > ");
           await userService
-            .updateUserLogo(loggedInUser._id, data)
+            .updateUserLogo(loggedInUser._id, preview.current)
             .then((res) => {
               toast.success(res, {
                 position: toast.POSITION.TOP_CENTER,
@@ -112,19 +86,49 @@ const Header = ({
               });
             });
         } else {
-          console.log("user logo findIndex[] > ", logo);
-          await userService
-            .updateUserLogoExisting(loggedInUser._id, data)
-            .then((res) => {
-              toast.success(res, {
-                position: toast.POSITION.TOP_CENTER,
+          console.log("user length >1 ", user);
+
+          let i = user.logos.findIndex(checkLogo);
+          function checkLogo(logo) {
+            return logo._id === preview.current._id;
+          }
+          let data = {
+            _id: logo._id,
+            name: logo.name,
+            category: logo.category,
+            logotype: "user",
+            logoSvg: logo.logoSvg,
+            logoJson: logo.logoJson,
+          };
+          if (i === -1) {
+            console.log("user logo could not find index > ");
+            await userService
+              .updateUserLogo(loggedInUser._id, data)
+              .then((res) => {
+                toast.success(res, {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+              })
+              .catch((err) => {
+                toast.err(err.response.data, {
+                  position: toast.POSITION.TOP_CENTER,
+                });
               });
-            })
-            .catch((err) => {
-              toast.err(err.response.data, {
-                position: toast.POSITION.TOP_CENTER,
+          } else {
+            console.log("user logo findIndex[] > ", logo);
+            await userService
+              .updateUserLogoExisting(loggedInUser._id, data)
+              .then((res) => {
+                toast.success(res, {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+              })
+              .catch((err) => {
+                toast.err(err.response.data, {
+                  position: toast.POSITION.TOP_CENTER,
+                });
               });
-            });
+          }
         }
       }
     }
@@ -300,10 +304,13 @@ const Header = ({
                       size="medium"
                       className={classes.savelogo}
                       onClick={() => {
-                        userService.isLoggedIn ? (
+                        userService.isLoggedIn() ? (
                           setUserLogo(preview.current)
                         ) : (
-                          <Redirect to="/login" />
+                          <>
+                            {history.push("/login")}
+                            {setLogin(!login)}
+                          </>
                         );
                       }}
                     >

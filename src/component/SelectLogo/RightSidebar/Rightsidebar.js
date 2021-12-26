@@ -10,8 +10,6 @@ import { useStyle } from "./RightsidebarStyle";
 import logoService from "../../../services/Logos";
 
 import { Link } from "react-router-dom";
-// import { Logoos } from "../../LogoSubCategory/DumyData";
-import axios from "axios";
 
 const Rightsidebar = ({ setLogo, catName, search }) => {
   const classes = useStyle();
