@@ -126,7 +126,7 @@ const Navbar = () => {
   //Hooks
   //Boolean(anchorEl) This is use to convert a null value in to a boolean
   //anchorEl Is us to set the position of the menu
-
+  const [login, setLogin] = React.useState(false);
   // const [profile, setProfile] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(false);
   // const open = Boolean(anchorEl);
@@ -137,11 +137,14 @@ const Navbar = () => {
     setAnchorEl(null);
   };
   const classes = useStyles();
+  // React.useEffect(() => {
+  //   setUpdate(!update);
+  // }, [login]);
 
   const theme = useTheme(); //Get a copy of our default theme in our component so that we can access the breakpoints and pass the useMediaQuery
 
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
-  const [login, setLogin] = React.useState(false);
+
   return (
     <>
       <AppBar className={classes.appbar}>

@@ -21,6 +21,7 @@ import ChangePasswordPage from "./pages/ChangePasswordPage";
 
 function App() {
   const [storedLogo, setStoredLogo] = React.useState(null);
+  // const [checkLogin, setCheckLogin] = React.useState(userService.isLoggedIn());
   console.log("USER service logged in > ", userService.isLoggedIn());
   const setLogo = (data) => {
     setStoredLogo(data);

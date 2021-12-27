@@ -1,5 +1,6 @@
 import GenericService from "./GenericService";
 import jwtDecode from "jwt-decode";
+
 class UserService extends GenericService {
   constructor() {
     super();

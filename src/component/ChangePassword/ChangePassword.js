@@ -37,6 +37,14 @@ const ChangePassword = () => {
   });
   const [loggedIn, setLoggedIn] = React.useState(null);
   const [disable, setDisable] = React.useState(true);
+  const [check, setCheck] = React.useState(false);
+
+  window.addEventListener("storage", (e) => {
+    console.log("Storage 44");
+    setCheck(!check);
+  });
+  // React.useEffect(() => {
+  // });
 
   const fetchUser = async () => {
     let user = await userService.getSingleUser(

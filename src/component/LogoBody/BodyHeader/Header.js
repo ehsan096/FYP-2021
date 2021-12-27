@@ -81,7 +81,7 @@ const Header = ({
               });
             })
             .catch((err) => {
-              toast.err(err.response.data, {
+              toast.error(err.response.data, {
                 position: toast.POSITION.TOP_CENTER,
               });
             });

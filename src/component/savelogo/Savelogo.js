@@ -3,7 +3,6 @@ import {
   Container,
   Grid,
   Card,
-  CardActionArea,
   CardMedia,
   Divider,
   CardContent,
@@ -22,11 +21,22 @@ const Savelogo = ({ setLogo }) => {
   const history = useHistory();
 
   const GetUserLogo = async () => {
-    let user = await UserService.getSingleUser(
-      await UserService.getLoggedInUser()._id
-    );
-    setUserLogo(user.logos);
+    let id = UserService.getLoggedInUser()._id;
+    UserService.getSingleUser(id)
+      .then((user) => {
+        console.log("UserLogo inside fun Above > ");
+        setUserLogo(user.logos);
+      })
+      .catch((err) => {
+        toast.error(err.response.data, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+    // return user.logos;
   };
+  React.useEffect(() => {
+    console.log("userLogo > ", userLogo);
+  }, [userLogo]);
   React.useEffect(() => {
     GetUserLogo();
   }, [update]);
@@ -42,7 +52,7 @@ const Savelogo = ({ setLogo }) => {
         setUpdate(!update);
       })
       .catch((err) => {
-        toast.err(err.response.data, {
+        toast.error(err.response.data, {
           position: toast.POSITION.TOP_CENTER,
         });
 
