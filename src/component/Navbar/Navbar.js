@@ -213,14 +213,6 @@ const Navbar = () => {
                       </div>
 
                       <Menu
-                        // className={classes.profilemenu12}
-                        // id="basic-menu"
-                        // anchorEl={profile}
-                        // open={open}
-                        // onClose={handleClose}
-                        // MenuListProps={{
-                        //   "aria-labelledby": "basic-button",
-                        // }}
                         className={classes.profilemenu12}
                         id="simple-menu"
                         anchorEl={anchorEl}
