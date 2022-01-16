@@ -74,7 +74,7 @@ const Canvas = ({
         name: storedLogo.name,
         category: storedLogo.category,
         logoSvg: canvas.toSVG(),
-        logoJson: canvas.toJSON(),
+        logoJson: JSON.stringify(canvas.toJSON()),
       };
     }
   };
@@ -97,63 +97,13 @@ const Canvas = ({
       itext.styles = {};
       return itext;
     }
-    // canvas.get;
-    // var svg;
-    // fabric.loadSVGFromString(str, function (objects, options) {
-    //   svg = fabric.util.groupSVGElements(objects, options);
-    //   svg.scaleToHeight(canvas.height);
 
-    //   canvas.add(svg);
-    //   svg.center();
-    //   canvas.renderAll();
-    //   svg.setCoords();
-    //   var bounds = svg.getObjects();
-    //   console.log(bounds[1]);
-    //   bounds[0].group.setFill("#00000");
-
-    //   fabric.loadSVGFromString(str, function (objects, options) {
-    //     var group = new fabric.Group(objects, options);
-    //     canvas.add(group);
-    //     group.scaleToHeight(canvas.getHeight());
-    //     canvas.renderAll();
-    //     var items = group._objects;
-    //     group._restoreObjectsState();
-    //     canvas.remove(group);
-    //     for (var i = 0; i < items.length; i++) {
-    //       items[i].set({
-    //         left: svg.getLeft() + bounds[i].getLeft() * svg.getScaleX(),
-    //         top: svg.getTop() + bounds[i].getTop() * svg.getScaleY(),
-    //       });
-    //       canvas.add(items[i]);
-    //     }
-    //   });
-    // });
     let closingTags = str.match(/(<\/?\w+>)/g);
     console.log("Closing tag > ", closingTags ? true : false);
 
     canvas.setDimensions({ width: 400, height: 400 });
     closingTags
       ? fabric.loadSVGFromString(str, function (objects, options) {
-          // canvas.centerObject
-          // //This is how
-          // let svg = document.getElementById('svg-logo');
-          // let svgWidth = svg.viewBox.baseVal.width;
-          // let svgHeight = svg.viewBox.baseVal.height;
-
-          // var svgg = fabric.util.groupSVGElements(objects,options);
-          // // svg.center();
-          // svgg.set({
-          //   top: 5,
-          //   left: 5,
-          //   width: 400,
-          //   height: 400,
-          //   scaleX: (canvas.width - 10) / 400,
-          //   scaleY: (canvas.height - 10) / 400
-          // });
-          // canvas.add(svgg).renderAll();
-
-          // console.log("objects > ", svg.width);
-
           for (var i = 0; i < objects.length; i++) {
             var obj = objects[i];
 
@@ -168,37 +118,14 @@ const Canvas = ({
             }
             canvas.add(obj);
           }
-          // let CanvasObj = canvas.toJSON();
-          // console.log("Canvas > JSON Formate >  ", CanvasObj);
-          // canvas.clear();
-          // canvas.loadFromJSON(JSON.stringify(CanvasObj));
-          // canvas.forEachObject(function (obj) {
-          //   console.log("Object type > ", obj.type);
-          //   if (obj.type === "text") {
-          //     obj = ConvertToIText(obj);
-          //     obj.firstText = obj.text;
-          //     obj.textState = "original";
-          //   }
-          // });
-          // canvas.add.apply(canvas, objects);
-          // canvas.backgroundColor = "red";
         })
-      : // const objectss = JSON.parse(jsonn);
-        // // const string = JSON.parse(str);
-        // console.log("Type of SVG > ", str.match(/(<\/?\w+>)/g));
-        // console.log("type here >", typeof objectss);
-        canvas.loadFromJSON(
+      : canvas.loadFromJSON(
           str,
           canvas.renderAll.bind(canvas),
           function (objects, options) {
-            // fabric.log(o, object);
-
-            // canvas.add(svgg).renderAll();
-            // canvas.setDimensions({ width: 300, height: 300 });
             console.log("objects  canvas obj> ", canvas.toSVG());
           }
         );
-    // });
     console.log(
       "Canvas height > ",
       canvas.getHeight(),
@@ -217,7 +144,7 @@ const Canvas = ({
         name: storedLogo.name,
         category: storedLogo.category,
         logoSvg: canvas.toSVG(),
-        logoJson: canvas.toJSON(),
+        logoJson: JSON.stringify(canvas.toJSON()),
       };
     }
 

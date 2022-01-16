@@ -62,7 +62,7 @@ const Header = ({ storedLogo }) => {
                       <Button
                         variant="outlined"
                         size="medium"
-                        className={classes.mylogo}
+                        className={classes.makelogo}
                       >
                         MyLogo
                       </Button>
@@ -78,7 +78,7 @@ const Header = ({ storedLogo }) => {
                       <Grid item>
                         <Link to="/login" className={classes.loginlink}>
                           <Button
-                            className={classes.loginbutton}
+                            className={classes.makelogo}
                             variant="contained"
                           >
                             Log in{" "}

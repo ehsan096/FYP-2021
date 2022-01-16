@@ -7,7 +7,14 @@ import MiddleSidebar from "./Middlesidebar/MiddleSidebar";
 import RightSidebar from "./RightSidebar/RightSidebar";
 import Header from "./BodyHeader/Header";
 
-const MainLogobody = ({ storedLogo, setLogo }) => {
+const MainLogobody = ({
+  iconCategories,
+  icons,
+  shapes,
+  storedLogo,
+  setLogo,
+  updateRecord,
+}) => {
   const classes = useStyle();
 
   const [svgLogo, setSvgLogo] = React.useState(null);
@@ -53,6 +60,7 @@ const MainLogobody = ({ storedLogo, setLogo }) => {
         preview={preview}
         setLoginCheck={setLoginCheck}
         loginCheck={loginCheck}
+        updateRecord={updateRecord}
       />
       <Grid container className={classes.grid}>
         <Grid item xs={1} sm={1} md={1} className={classes.leftsidebar}>
@@ -74,6 +82,9 @@ const MainLogobody = ({ storedLogo, setLogo }) => {
             setIconType={setIconType}
             setBackgroundColor={setBackgroundColor}
             backgroundColor={backgroundColor}
+            iconCategories={iconCategories}
+            icons={icons}
+            shapes={shapes}
           />
         </Grid>
         <Grid item xs={6} sm={5} md={5} lg={5} className={classes.canvas}>

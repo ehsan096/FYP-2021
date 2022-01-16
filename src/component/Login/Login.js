@@ -124,7 +124,7 @@ const Login = () => {
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Typography className={classes.forgotpassword}>
-                  <Link>Forgot Password?</Link>
+                  <Link to={"/forgetPassword"}>Forgot Password?</Link>
                 </Typography>
               </Grid>
             </Grid>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   AppBar,
   Button,
@@ -33,14 +33,15 @@ import man from "../../../images/man.jpeg";
 import UserService from "../../../services/UserService";
 
 import userService from "../../../services/UserService";
+import logoService from "../../../services/Logos";
 import DrawerComponent from "./DrawerComponent";
 
 const Header = ({
   setUndoRedo,
   setDownload,
   preview,
-  loginCheck,
   setLoginCheck,
+  updateRecord,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState(false);
   const [login, setLogin] = React.useState(false);
@@ -243,7 +244,7 @@ const Header = ({
               </Grid>
               <Grid item>
                 <Grid container>
-                  <Grid item md={8}>
+                  <Grid item md={6}>
                     {/* <Link className={classes.makelogolink}> */}
                     <Button
                       variant="outlined"
@@ -277,7 +278,7 @@ const Header = ({
               </Grid>
               <Grid item>
                 <Grid container>
-                  <Grid item md={8}>
+                  <Grid item md={6}>
                     {/* <Link to="/logo" className={classes.makelogolink}> */}
                     <Button
                       variant="outlined"
@@ -298,7 +299,7 @@ const Header = ({
                     />
                     {/* </Link> */}
                   </Grid>
-                  <Grid item md={2}>
+                  <Grid item md={4}>
                     <Button
                       variant="outlined"
                       size="medium"
@@ -320,6 +321,43 @@ const Header = ({
                       />
                       Save
                     </Button>
+                  </Grid>
+                  <Grid item md={2}>
+                    {userService.getLoggedInUser() ? (
+                      userService.getLoggedInUser().role === "admin" ? (
+                        <Button
+                          variant="outlined"
+                          size="medium"
+                          className={classes.updatelogo}
+                          onClick={() => {
+                            logoService
+                              .updateLogo(preview.current._id, {
+                                name: preview.current.name,
+                                category: preview.current.category,
+                                logoSvg: preview.current.logoSvg,
+                                logoJson: preview.current.logoJson,
+                              })
+                              .then((res) => {
+                                updateRecord();
+                                toast.success(res, {
+                                  position: toast.POSITION.TOP_CENTER,
+                                });
+                              })
+                              .catch((err) => {
+                                toast.error(err.response.data, {
+                                  position: toast.POSITION.TOP_CENTER,
+                                });
+                              });
+                          }}
+                        >
+                          Update
+                        </Button>
+                      ) : (
+                        ""
+                      )
+                    ) : (
+                      ""
+                    )}
                   </Grid>
                 </Grid>
               </Grid>

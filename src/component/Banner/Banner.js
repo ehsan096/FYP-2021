@@ -1,13 +1,7 @@
-import {
-  Container,
-  Grid,
-  Typography,
-  Button,
-  CardMedia,
-} from "@material-ui/core";
+import { Container, Grid, Typography, Button } from "@material-ui/core";
 import React from "react";
 import { useStyle } from "./BannerStyle";
-import demoimage from "../../images/laptop.png";
+// import demoimage from "../../images/laptop.png";
 import laptopimage from "../../images/laptopimage.webp";
 import demovideo from "../../images/demo.mp4";
 import { Link } from "react-router-dom";

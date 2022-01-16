@@ -102,7 +102,7 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
     marginTop: "0.5rem",
     "&:hover": {
-      background: "#2ac5b3",
+      background: "#2ac5c4",
     },
   },
   category: {
@@ -129,5 +129,17 @@ export const useStyles = makeStyles((theme) => ({
   },
   icons: {
     fontSize: "1.4rem",
+  },
+  makelogo: {
+    border: "1px solid #2ac5b3",
+    fontSize: "12px",
+    fontWeight: "bold",
+    marginTop: "0.5rem",
+    color: "#2ac5b3",
+    "&:hover": {
+      background: "#2ac5b3",
+      color: "white",
+      fontSize: "12px",
+    },
   },
 }));

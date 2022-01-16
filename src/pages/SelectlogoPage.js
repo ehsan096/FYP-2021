@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../component/SelectLogo/Header/Header";
 import SelectlogoMain from "../component/SelectLogo/SelectlogoMain";
-const SelectlogoPage = ({ storedLogo, setLogo }) => {
+const SelectlogoPage = ({ logos, categories, storedLogo, setLogo }) => {
   return (
     <div>
       <Header storedLogo={storedLogo} />
-      <SelectlogoMain setLogo={setLogo} />
+      <SelectlogoMain logos={logos} categories={categories} setLogo={setLogo} />
     </div>
   );
 };

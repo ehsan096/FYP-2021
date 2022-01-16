@@ -65,46 +65,50 @@ const Savelogo = ({ setLogo }) => {
       <div className={classes.savelogodiv}>
         <Container>
           <Grid container spacing={2}>
-            {userLogo
-              ? userLogo.map((logo) => (
-                  <Grid item lg={3} className={classes.savelogocontainer}>
-                    <Card>
-                      <CardMedia
-                        image={`data:image/svg+xml;base64,${btoa(
-                          unescape(encodeURIComponent(logo.logoSvg))
-                        )}`}
-                        className={classes.savelogoimage}
-                      />
-                      <Divider />
-                      <CardContent>
-                        <div className={classes.savelogobutton}>
-                          <Button
-                            className={classes.editbutton}
-                            variant="contained"
-                            size="small"
-                            onClick={() => {
-                              setLogo(logo);
-                              history.push(
-                                `/selectlogo/${logo.category}/${logo._id}`
-                              );
-                            }}
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            className={classes.deletebutton}
-                            variant="contained"
-                            size="small"
-                            onClick={(e) => deleteLogo(e, logo)}
-                          >
-                            Delete
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                ))
-              : ""}
+            {userLogo ? (
+              userLogo.map((logo) => (
+                <Grid item lg={3} className={classes.savelogocontainer}>
+                  <Card>
+                    <CardMedia
+                      image={`data:image/svg+xml;base64,${btoa(
+                        unescape(encodeURIComponent(logo.logoSvg))
+                      )}`}
+                      className={classes.savelogoimage}
+                    />
+                    <Divider />
+                    <CardContent>
+                      <div className={classes.savelogobutton}>
+                        <Button
+                          className={classes.editbutton}
+                          variant="contained"
+                          size="small"
+                          onClick={() => {
+                            setLogo(logo);
+                            history.push(
+                              `/selectlogo/${logo.category}/${logo._id}`
+                            );
+                          }}
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          className={classes.deletebutton}
+                          variant="contained"
+                          size="small"
+                          onClick={(e) => deleteLogo(e, logo)}
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))
+            ) : (
+              <div className={classes.nofound}>
+                <h1>No logo found</h1>
+              </div>
+            )}
           </Grid>
         </Container>
       </div>

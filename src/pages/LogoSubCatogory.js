@@ -10,36 +10,36 @@ import CategoriesService from "../services/Categories";
 import LogosService from "../services/Logos";
 import { useParams } from "react-router-dom";
 
-const LogoSubCatogory = ({ setLogo }) => {
+const LogoSubCatogory = ({ logos, categories, setLogo }) => {
   const { variable } = useParams();
-  const [Logoos, setLogoos] = React.useState([]);
-  const [categories, setCategories] = React.useState([]);
+  // const [Logoos, setLogoos] = React.useState([]);
+  // const [categories, setCategories] = React.useState([]);
 
-  const getCategories = () => {
-    CategoriesService.getCategories()
-      .then((data) => {
-        setCategories(data.categories);
-        console.log("Response category>> ", data.categories);
-      })
-      .catch((err) => {
-        console.log("Error ", err);
-      });
-  };
+  // const getCategories = () => {
+  //   CategoriesService.getCategories()
+  //     .then((data) => {
+  //       setCategories(data.categories);
+  //       console.log("Response category>> ", data.categories);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error ", err);
+  //     });
+  // };
 
-  const getLogos = () => {
-    LogosService.getLogos()
-      .then((data) => {
-        setLogoos(data);
-        console.log("Response Logos>> ", data);
-      })
-      .catch((err) => {
-        console.log("Error ", err);
-      });
-  };
-  React.useEffect(() => {
-    getCategories();
-    getLogos();
-  }, []);
+  // const getLogos = () => {
+  //   LogosService.getLogos()
+  //     .then((data) => {
+  //       setLogoos(data);
+  //       console.log("Response Logos>> ", data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error ", err);
+  //     });
+  // };
+  // React.useEffect(() => {
+  //   getCategories();
+  //   getLogos();
+  // }, []);
   console.log("URL Variable > ", variable);
   return (
     <div>
@@ -55,7 +55,7 @@ const LogoSubCatogory = ({ setLogo }) => {
                 <Logos
                   setLogo={setLogo}
                   title={categry.logoTitle}
-                  Logoos={Logoos}
+                  logos={logos}
                 />
               </>
             ) : (

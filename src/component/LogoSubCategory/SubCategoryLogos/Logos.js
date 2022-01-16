@@ -16,8 +16,8 @@ import { useStyle } from "./LogosStyle";
 import { useParams } from "react-router-dom";
 // import axios from 'axios';
 
-const Logos = ({ setLogo, title, Logoos }) => {
-  console.log("Logoos > ", Logoos);
+const Logos = ({ setLogo, title, logos }) => {
+  console.log("Logo > ", logos);
   const { variable } = useParams();
 
   const classes = useStyle();
@@ -28,8 +28,8 @@ const Logos = ({ setLogo, title, Logoos }) => {
           {title}
         </Typography>
         <Grid container spacing={3}>
-          {Logoos.length > 0
-            ? Logoos.map((logoo, index) =>
+          {logos.length > 0
+            ? logos.map((logoo, index) =>
                 logoo.category === variable ? (
                   <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                     <Link

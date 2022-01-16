@@ -17,6 +17,12 @@ export const useStyle = makeStyles((theme) => ({
     marginTop: "10px",
     marginLeft: "0.9rem",
   },
+  nofound: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "yellow",
+  },
   savelogobutton: {
     display: "flex",
     justifyContent: "space-around",

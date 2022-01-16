@@ -7,37 +7,22 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { useStyle } from "./RightsidebarStyle";
-import logoService from "../../../services/Logos";
 
 import { Link } from "react-router-dom";
 
-const Rightsidebar = ({ setLogo, catName, search }) => {
+const Rightsidebar = ({ logos, setLogo, catName, search }) => {
   const classes = useStyle();
-  const [Logoos, setLogoos] = React.useState([]);
-  // console.log("Logoos > ", Logoos);
-  const getLogos = () => {
-    logoService
-      .getLogos()
-      .then((data) => {
-        setLogoos(data);
-        console.log("Response Logos>> ", data);
-      })
-      .catch((err) => {
-        console.log("Error ", err);
-      });
-  };
-  React.useEffect(() => {
-    getLogos();
-  }, []);
+
   return (
     <div>
       <Grid
         container
         spacing={3}
         justifyContent="center"
+        // style={{ overflowY: "auto" }}
         className={classes.grid}
       >
-        {Logoos.map((logoo, index) => {
+        {logos.map((logoo, index) => {
           return catName ? (
             logoo.category === catName ? (
               search ? (

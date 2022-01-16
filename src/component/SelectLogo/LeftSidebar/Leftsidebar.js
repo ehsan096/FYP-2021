@@ -12,29 +12,30 @@ import DrawerComponent from "./DrawerComponent";
 
 import categoryService from "../../../services/Categories";
 
-const Leftsidebar = ({ setCatName, setSearch, search }) => {
+const Leftsidebar = ({ categories, setCatName, setSearch, search }) => {
   // const [value, setValue] = useState(0);
   // const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyle();
   const theme = useTheme(); //Get a copy of our default theme in our component so that we can access the breakpoints and pass the useMediaQuery
 
   const isMatch = useMediaQuery(theme.breakpoints.down("xs"));
-  const [categories, setCategories] = React.useState([]);
 
-  const getCategories = () => {
-    categoryService
-      .getCategories()
-      .then((data) => {
-        console.log("Get main Logo Data > ", data);
-        setCategories(data.categories);
-      })
-      .catch((err) => {
-        console.log("Error in Main Logo", err);
-      });
-  };
-  React.useEffect(() => {
-    getCategories();
-  }, []);
+  // const [categories, setCategories] = React.useState([]);
+
+  // const getCategories = () => {
+  //   categoryService
+  //     .getCategories()
+  //     .then((data) => {
+  //       console.log("Get main Logo Data > ", data);
+  //       setCategories(data.categories);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error in Main Logo", err);
+  //     });
+  // };
+  // React.useEffect(() => {
+  //   getCategories();
+  // }, []);
 
   return (
     <div>

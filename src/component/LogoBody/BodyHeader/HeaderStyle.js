@@ -82,6 +82,19 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "12px",
     },
   },
+  updatelogo: {
+    fontSize: "12px",
+    fontWeight: "bold",
+    marginTop: "1rem",
+    color: "white",
+    border: "1px solid #2ac5b3 ",
+    "&:hover": {
+      background: "#2ac5b3",
+      color: "white",
+      fontSize: "12px",
+      border: "1px solid white ",
+    },
+  },
   loginlink: {
     textDecoration: "none",
   },

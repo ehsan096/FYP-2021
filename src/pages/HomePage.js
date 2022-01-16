@@ -5,12 +5,12 @@ import Footer from "../component/Footer/Footer";
 import Logocategory from "../component/LogoCategory/Logocategory";
 import Navbar from "../component/Navbar/Navbar";
 
-const HomePage = () => {
+const HomePage = ({ categories }) => {
   return (
     <div>
       <Navbar />
       <Banner />
-      <Logocategory />
+      <Logocategory categories={categories} />
       <Footer />
     </div>
   );

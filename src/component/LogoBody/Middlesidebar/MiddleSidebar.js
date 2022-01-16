@@ -17,41 +17,21 @@ const MiddleSidebar = ({
   setIconType,
   setBackgroundColor,
   backgroundColor,
+  iconCategories,
+  icons,
+  shapes,
 }) => {
   const classes = useStyle();
   const [checked, setChecked] = useState(false);
-  const [iconStored, setIconStored] = useState([]);
-  const [iconCategoriesStored, setIconCategoriesStored] = useState([]);
-  const [shapeStored, setShapeStored] = useState([]);
 
-  const gettingIcons = async () => {
-    let icons = await iconsService.getIcons();
-    console.log("Icon in editor > ", icons);
-    setIconStored(icons);
-  };
-  const gettingIconCategories = async () => {
-    let categories = await iconCategoriesService.getIconCategories();
-    console.log("categories in editor > ", categories.categories);
-    setIconCategoriesStored(categories.categories);
-  };
-  const gettingshapes = async () => {
-    let shapes = await shapesService.getShapes();
-    console.log("shapes in editor > ", shapes);
-    setShapeStored(shapes);
-  };
-  React.useEffect(() => {
-    gettingIcons();
-    gettingIconCategories();
-    gettingshapes();
-  }, []);
   return (
     <div className={classes.middlesidebar}>
       {content === "icon" ? (
         <>
           {iconType ? (
             <Grid container spacing={1} className={classes.stargrid}>
-              {iconStored.length > 0
-                ? iconStored.map((icon, index) =>
+              {icons.length > 0
+                ? icons.map((icon, index) =>
                     icon.category === iconType ? (
                       <Grid
                         item
@@ -72,8 +52,8 @@ const MiddleSidebar = ({
             </Grid>
           ) : (
             <Grid container spacing={1} className={classes.grid}>
-              {iconCategoriesStored.length > 0
-                ? iconCategoriesStored.map((logo, index) => (
+              {iconCategories.length > 0
+                ? iconCategories.map((logo, index) => (
                     <Grid
                       item
                       className={classes.circle}
@@ -108,8 +88,8 @@ const MiddleSidebar = ({
       ) : content === "shape" ? (
         <>
           <Grid container spacing={1} className={classes.shapegrid}>
-            {shapeStored.length > 0
-              ? shapeStored.map((badge, index) => (
+            {shapes.length > 0
+              ? shapes.map((badge, index) => (
                   <Grid
                     item
                     lg={4}

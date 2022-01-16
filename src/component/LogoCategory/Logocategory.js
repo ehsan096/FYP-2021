@@ -13,23 +13,23 @@ import { Link } from "react-router-dom";
 import { useStyle } from "./Style";
 import categoryService from "../../services/Categories";
 
-const Logocategory = () => {
+const Logocategory = ({ categories }) => {
   const classes = useStyle();
-  const [categories, setCategories] = React.useState([]);
-  const getCategories = () => {
-    categoryService
-      .getCategories()
-      .then((data) => {
-        console.log("Get main Logo Data > ", data);
-        setCategories(data.categories);
-      })
-      .catch((err) => {
-        console.log("Error in Main Logo", err);
-      });
-  };
-  React.useEffect(() => {
-    getCategories();
-  }, []);
+  // const [categories, setCategories] = React.useState([]);
+  // const getCategories = () => {
+  //   categoryService
+  //     .getCategories()
+  //     .then((data) => {
+  //       console.log("Get main Logo Data > ", data);
+  //       setCategories(data.categories);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error in Main Logo", err);
+  //     });
+  // };
+  // React.useEffect(() => {
+  //   getCategories();
+  // }, []);
 
   return (
     <div>

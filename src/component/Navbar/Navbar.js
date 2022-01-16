@@ -225,11 +225,10 @@ const Navbar = () => {
                             to="/savelogo"
                             className={classes.profilemenulink}
                           >
-                            My Logos
+                            My Logo
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                          {" "}
                           <Link
                             to="/changepassword"
                             className={classes.profilemenulink}
@@ -244,7 +243,9 @@ const Navbar = () => {
                             setLogin(!login);
                           }}
                         >
-                          Logout
+                          <Link className={classes.profilemenulink} to={"/"}>
+                            Logout
+                          </Link>
                         </MenuItem>
                       </Menu>
                     </Grid>
