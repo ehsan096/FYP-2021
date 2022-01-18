@@ -772,15 +772,15 @@ const Canvas = ({
         });
         setDownload(null);
       } else if (download === "svg") {
-        // saveAs(
-        //   new Blob([canvas.toSVG()], { type: "image/svg+xml" }),
-        //   `logo.svg`
-        // );
-        var json = canvas.toJSON();
         saveAs(
-          new Blob([JSON.stringify(json)], { type: "txt/JSON" }),
-          "name.JSON"
+          new Blob([canvas.toSVG()], { type: "image/svg+xml" }),
+          `logo.svg`
         );
+        // var json = canvas.toJSON();
+        // saveAs(
+        //   new Blob([JSON.stringify(json)], { type: "txt/JSON" }),
+        //   "name.JSON"
+        // );
         setDownload(null);
       }
     }
